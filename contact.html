@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakira Shute Narrator — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===== CONTACT — same Grimoire styling as the main page ===== */
+:root {
+  --night: #0d0a14;
+  --plum: #171022;
+  --velvet: #231833;
+  --gold: #c9a45c;
+  --gold-soft: rgba(201,164,92,.35);
+  --moon: #ece4cf;
+  --moon-soft: rgba(236,228,207,.68);
+  --rose: #c79288;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Cormorant Garamond", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; } /* the ring and stars around the photo can poke past the edge of the window; clip them instead of scrolling sideways */
+body {
+  margin: 0; color: var(--moon); font: 400 1.3rem/1.6 var(--body);
+  background: radial-gradient(ellipse 120% 60% at 50% 0%, #241536 0%, var(--night) 60%) fixed, var(--night);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.15; letter-spacing: .06em; }
+
+/* ---- Starfield ---- */
+.sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.sky i { position: absolute; border-radius: 50%; background: #fff6de; animation: twinkle var(--d) ease-in-out infinite alternate; }
+@keyframes twinkle { from { opacity: .15; } to { opacity: .9; } }
+main, header { position: relative; z-index: 1; }
+
+.btn { display: inline-block; padding: .85em 1.9em; border: 1px solid var(--gold); color: var(--gold); background: none; text-decoration: none; font: 500 .8rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; transition: background .25s, color .25s; cursor: pointer; }
+.btn:hover, .btn.fill { background: var(--gold); color: var(--night); }
+.btn.fill:hover { background: transparent; color: var(--gold); }
+
+/* ---- Header ---- */
+header { text-align: center; padding: 2.4rem 16px 1rem; }
+.moons { display: flex; justify-content: center; gap: .9rem; margin-bottom: 1.1rem; }
+.moons svg { width: 16px; height: 16px; }
+.brand { font: 500 1.6rem/1 var(--display); letter-spacing: .3em; text-decoration: none; }
+header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 0; margin-top: 1.3rem; font: 400 .74rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; }
+header nav a { text-decoration: none; opacity: .75; padding: .4rem 0; }
+header nav a:not(:last-child)::after { content: "✦"; margin: 0 1rem; color: var(--gold); opacity: .7; font-size: .6rem; vertical-align: middle; }
+header nav a:hover, header nav a.on { opacity: 1; color: var(--gold); }
+header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the Evelyn Rose page's pink */
+
+/* ---- Ornamental divider ---- */
+.divider { display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--gold); margin: 0 auto; max-width: 520px; padding: 0 16px; }
+.divider::before, .divider::after { content: ""; flex: 1; border-top: 1px solid var(--gold-soft); }
+.divider svg { width: 90px; height: 18px; }
+
+.section { max-width: 1180px; margin: 0 auto; padding: 4.5rem 5vw; }
+.sec-head { text-align: center; margin-bottom: 3.5rem; }
+.sec-head .eyebrow { font: italic 400 1.2rem/1 var(--body); color: var(--rose); }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-top: .6rem; }
+.sec-head p { color: var(--moon-soft); font-style: italic; margin: .8rem 0 0; }
+
+/* ---- Hero ---- */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; max-width: 1180px; margin: 0 auto; padding: 4rem 5vw 5rem; }
+.hero .eyebrow { font: 500 .78rem/1 var(--display); letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+.hero h1 { font-size: clamp(3rem, 7.4vw, 6rem); line-height: 1; margin: 1.2rem 0 1.4rem; letter-spacing: .04em; }
+.hero h1 span { display: block; font: italic 400 .36em/1.25 var(--body); letter-spacing: .02em; color: var(--rose); margin-top: .7rem; }
+.hero p { color: var(--moon-soft); max-width: 30rem; margin: 0 0 2rem; }
+.email { display: inline-flex; align-items: center; gap: .9rem; font: 500 clamp(1.05rem, 2vw, 1.35rem)/1 var(--display); letter-spacing: .06em; color: var(--moon); text-decoration: none; padding: 1rem 1.5rem; border: 1px solid var(--gold); background: rgba(35,24,51,.6); transition: box-shadow .5s, background .5s; }
+.email svg { width: 22px; height: 22px; color: var(--gold); flex: 0 0 auto; }
+.email:hover { box-shadow: 0 0 0 3px var(--gold), 0 0 34px rgba(201,164,92,.3); background: rgba(35,24,51,.9); }
+
+.portal { position: relative; width: min(100%, 440px); margin: 3rem auto 0; aspect-ratio: 440 / 600; } /* top margin keeps the ring clear of the menu on desktop */
+.ring { position: absolute; left: 50%; top: 34%; width: 138%; aspect-ratio: 1; transform: translate(-50%, -50%); animation: spin 90s linear infinite; }
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.ring text { font: 500 13px var(--display); letter-spacing: 4px; fill: var(--gold); }
+.arch { position: absolute; inset: 0; border-radius: 999px 999px 4px 4px; overflow: hidden; border: 1px solid var(--gold); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: saturate(.85) contrast(1.05); }
+.arch::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,16,34,0) 55%, rgba(13,10,20,.65)); }
+.portal::before { content: ""; position: absolute; inset: -12px; border: 1px solid var(--gold-soft); border-radius: 999px 999px 8px 8px; }
+.portal .star { position: absolute; color: var(--gold); font-size: 1.4rem; }
+
+
+@media (max-width: 860px) {
+  body { font-size: 1.18rem; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 16px 4rem; gap: 4rem; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .portal { width: min(78%, 360px); margin-top: 3.5rem; } /* room for the ring, which extends above the arch */
+  .section { padding: 3.5rem 16px; }
+  header nav a:not(:last-child)::after { margin: 0 .6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ring, .sky i { animation: none; } * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+<header>
+  <div class="moons" id="moons" aria-hidden="true"></div>
+  <a class="brand" href="index.html">Shakira Shute</a>
+  <nav>
+    <!-- ARCHIVED (ask to restore): <a href="https://www.shakirashute.com/">Home</a> -->
+    <a href="index.html">Audiobooks</a>
+    <a href="awards.html">Awards</a>
+    <a href="evelyn-rose.html">Evelyn Rose</a>
+    <a href="voice-actor.html">Voice Actor</a>
+    <a class="on" href="#">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">✦ Get in touch ✦</div>
+      <h1>Contact<span>Let my voice bring that magic to life</span></h1>
+      <p>A British audiobook narrator and voice actor, bringing passion and authenticity to your words.</p>
+      <a class="email" href="mailto:shakirashute@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="5.5" width="18" height="13" rx="1"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+        shakirashute@gmail.com
+      </a>
+    </div>
+    <div class="portal">
+      <svg class="ring" viewBox="0 0 600 600" aria-hidden="true">
+        <defs><path id="circ" d="M300 300 m-270 0 a270 270 0 1 1 540 0 a270 270 0 1 1 -540 0"/></defs>
+        <circle cx="300" cy="300" r="290" fill="none" stroke="rgba(201,164,92,.25)"/>
+        <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(201,164,92,.15)"/>
+        <!-- textLength fits the words exactly once around the circle (circumference ≈ 1697) -->
+        <text textLength="1690" lengthAdjust="spacing"><textPath href="#circ">✦ AUDIOBOOKS ✦ VOICE OVER ✦ DIRECTED SESSIONS ✦ BOOKS ARE MAGIC ✦ AUDIOBOOKS ✦ VOICE OVER ✦ DIRECTED SESSIONS ✦ BOOKS ARE MAGIC&#160;</textPath></text>
+      </svg>
+      <div class="arch"><img data-photo="sittingTree" alt="Shakira Shute reading beneath a tree" loading="eager"></div>
+      <span class="star" style="left:-8%;top:18%">✦</span>
+      <span class="star" style="right:-6%;top:48%;font-size:1rem">✧</span>
+      <span class="star" style="left:4%;bottom:-4%;font-size:.9rem">✦</span>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* ===== CONTENT — photos from the live site ===== */
+const CDN = 'media/images/';
+const PH = (id, n) => `media/images/portrait-${n}.jpg`; // local copies of the portrait photos
+const PHOTOS = {
+  sittingTree: PH('843628b8-36b8-48b2-886c-66d89972604a', 108),
+};
+document.querySelectorAll('[data-photo]').forEach(img => { img.src = PHOTOS[img.dataset.photo]; if (!img.closest('.portal')) img.loading = 'lazy'; });
+
+// Moon phases across the header
+document.getElementById('moons').innerHTML = [-1, -0.5, 0, 0.5, 1].map(ph => {
+  if (ph === 0) return '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#ece4cf"/></svg>';
+  const off = ph < 0 ? -1 : 1;
+  return `<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#ece4cf"/><circle cx="${8 + off * (Math.abs(ph) === 1 ? 5 : 9)}" cy="8" r="7" fill="#0d0a14"/><circle cx="8" cy="8" r="7" fill="none" stroke="rgba(201,164,92,.5)" stroke-width=".8"/></svg>`;
+}).join('');
+
+// Starfield
+const sky = document.getElementById('sky');
+let stars = '';
+for (let k = 0; k < 110; k++) {
+  const s = (Math.random() * 1.8 + .6).toFixed(1);
+  stars += `<i style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 100).toFixed(2)}%;width:${s}px;height:${s}px;--d:${(Math.random() * 4 + 2).toFixed(1)}s;animation-delay:-${(Math.random() * 5).toFixed(1)}s"></i>`;
+}
+sky.innerHTML = stars;
+</script>
+</body>
+</html>

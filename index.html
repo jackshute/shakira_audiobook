@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakira Shute Narrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN C — THE GRIMOIRE =====
+   Midnight velvet, antique gold, moonlight, and the site's original dusty rose. */
+:root {
+  --night: #0d0a14;
+  --plum: #171022;
+  --velvet: #231833;
+  --gold: #c9a45c;
+  --gold-soft: rgba(201,164,92,.35);
+  --moon: #ece4cf;
+  --moon-soft: rgba(236,228,207,.68);
+  --rose: #c79288;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Cormorant Garamond", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; } /* the ring and stars around the photo can poke past the edge of the window; clip them instead of scrolling sideways */
+body {
+  margin: 0; color: var(--moon); font: 400 1.3rem/1.6 var(--body);
+  background: radial-gradient(ellipse 120% 60% at 50% 0%, #241536 0%, var(--night) 60%) fixed, var(--night);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.15; letter-spacing: .06em; }
+
+/* ---- Starfield ---- */
+.sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.sky i { position: absolute; border-radius: 50%; background: #fff6de; animation: twinkle var(--d) ease-in-out infinite alternate; }
+@keyframes twinkle { from { opacity: .15; } to { opacity: .9; } }
+main, header, footer { position: relative; z-index: 1; }
+
+.btn { display: inline-block; padding: .85em 1.9em; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font: 500 .8rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; transition: background .25s, color .25s; }
+.btn:hover, .btn.fill { background: var(--gold); color: var(--night); }
+.btn.fill:hover { background: transparent; color: var(--gold); }
+
+/* ---- Header ---- */
+header { text-align: center; padding: 2.4rem 16px 1rem; }
+.moons { display: flex; justify-content: center; gap: .9rem; margin-bottom: 1.1rem; }
+.moons svg { width: 16px; height: 16px; }
+.brand { font: 500 1.6rem/1 var(--display); letter-spacing: .3em; text-decoration: none; }
+header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 0; margin-top: 1.3rem; font: 400 .74rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; }
+header nav a { text-decoration: none; opacity: .75; padding: .4rem 0; }
+header nav a:not(:last-child)::after { content: "✦"; margin: 0 1rem; color: var(--gold); opacity: .7; font-size: .6rem; vertical-align: middle; }
+header nav a:hover, header nav a.on { opacity: 1; color: var(--gold); }
+header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the Evelyn Rose page's pink */
+
+/* ---- Ornamental divider ---- */
+.divider { display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--gold); margin: 0 auto; max-width: 520px; padding: 0 16px; }
+.divider::before, .divider::after { content: ""; flex: 1; border-top: 1px solid var(--gold-soft); }
+.divider svg { width: 90px; height: 18px; }
+
+.section { max-width: 1180px; margin: 0 auto; padding: 6rem 5vw; }
+.sec-head { text-align: center; margin-bottom: 3.5rem; }
+/* Tighten the space between the about panel and "The Book of Voices" to match the gap under "Nine voices…" */
+.section:has(> .folio) { padding-bottom: 4.5rem; }
+#samples { padding-top: 0; }
+/* Same idea for the divider above "A Reading of the Cards": match the gap under "What People Are Saying" */
+.section:has(.tarot) { padding-top: 4.5rem; padding-bottom: 0; }
+/* And between the cards and "Tales Recently Told" */
+.section:has(.tomes) { padding-top: 4.5rem; padding-bottom: 0; }
+/* Clients and The Studio: same 72px heading gaps as the rest of the page */
+.section:has(.houses) { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.section:has(.kit) { padding-top: 4.5rem; }
+.sec-head .eyebrow { font: italic 400 1.2rem/1 var(--body); color: var(--rose); }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-top: .6rem; }
+.sec-head p { color: var(--moon-soft); font-style: italic; margin: .8rem 0 0; }
+
+/* ---- Hero ---- */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; max-width: 1180px; margin: 0 auto; padding: 4rem 5vw 6rem; }
+.hero .eyebrow { font: 500 .78rem/1 var(--display); letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+.hero h1 { font-size: clamp(3rem, 7.4vw, 6rem); line-height: 1; margin: 1.2rem 0 1.4rem; letter-spacing: .04em; }
+.hero h1 span { display: block; font: italic 400 .42em/1.2 var(--body); letter-spacing: .02em; color: var(--rose); margin-top: .6rem; }
+.hero p { color: var(--moon-soft); max-width: 30rem; margin: 0 0 2.2rem; }
+.hero .ctas { display: inline-grid; grid-template-columns: auto auto; gap: .9rem; } /* Listen + Contact me on top, Instagram spanning underneath */
+.hero .ctas .btn { text-align: center; }
+.btn.insta { display: inline-flex; align-items: center; justify-content: center; gap: .6em; grid-column: 1 / -1; }
+.btn.insta svg { width: 14px; height: 14px; flex: 0 0 auto; }
+
+.portal { position: relative; width: min(100%, 440px); margin: 3rem auto 0; aspect-ratio: 440 / 600; } /* top margin keeps the ring clear of the menu on desktop */
+.ring { position: absolute; left: 50%; top: 34%; width: 138%; aspect-ratio: 1; transform: translate(-50%, -50%); animation: spin 90s linear infinite; }
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.ring text { font: 500 13px var(--display); letter-spacing: 6px; fill: var(--gold); }
+.arch { position: absolute; inset: 0; border-radius: 999px 999px 4px 4px; overflow: hidden; border: 1px solid var(--gold); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.85) contrast(1.05); }
+.arch::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,16,34,0) 55%, rgba(13,10,20,.65)); }
+.portal::before { content: ""; position: absolute; inset: -12px; border: 1px solid var(--gold-soft); border-radius: 999px 999px 8px 8px; }
+.portal .star { position: absolute; color: var(--gold); font-size: 1.4rem; }
+
+/* ---- About page ---- */
+.folio { position: relative; display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: center; padding: 3.5rem; border: 1px solid var(--gold-soft); background: rgba(23,16,34,.6); }
+.folio .corner { position: absolute; width: 46px; height: 46px; color: var(--gold); }
+.folio .corner.tl { top: 8px; left: 8px; }
+.folio .corner.tr { top: 8px; right: 8px; transform: scaleX(-1); }
+.folio .corner.bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+.folio .corner.br { bottom: 8px; right: 8px; transform: scale(-1); }
+.folio .small-arch { border-radius: 999px 999px 4px 4px; overflow: hidden; border: 1px solid var(--gold-soft); }
+.folio .small-arch img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.folio p { margin: 0 0 1.2rem; }
+.folio p:first-child::first-letter { float: left; font: 500 4.2em/.8 var(--display); color: var(--gold); padding: .08em .12em 0 0; }
+/* ---- The studio (moved from the contact page) ---- */
+.folio h3 { font-size: 1.6rem; margin-bottom: .4rem; }
+.folio .lede { color: var(--moon-soft); font-style: italic; margin: 0 0 1.6rem; }
+.kit { list-style: none; margin: 0; padding: 0; }
+.kit li { display: grid; grid-template-columns: 1.6rem 1fr; gap: .6rem; padding: .75rem 0; border-bottom: 1px solid var(--gold-soft); }
+.kit li:first-child { border-top: 1px solid var(--gold-soft); }
+.kit li::before { content: "✦"; color: var(--gold); font-size: .8rem; line-height: 2; }
+.kit b { font-weight: 500; }
+.kit span { display: block; color: var(--moon-soft); font-size: 1.05rem; font-style: italic; }
+
+/* ---- Book of voices (samples) ---- */
+.spells { list-style: none; margin: 0 auto; padding: 0; max-width: 860px; }
+.spell { display: grid; grid-template-columns: 64px 1fr 64px; gap: 1.4rem; align-items: center; padding: 1.4rem 0; border-bottom: 1px solid var(--gold-soft); cursor: pointer; }
+.spell:first-child { border-top: 1px solid var(--gold-soft); }
+.sigil { width: 64px; height: 64px; color: var(--gold); opacity: .7; transition: opacity .3s, transform .6s; }
+.spell:hover .sigil, .spell.active .sigil { opacity: 1; transform: rotate(30deg); }
+.spell .numeral { font: 500 .72rem/1 var(--display); letter-spacing: .3em; color: var(--rose); }
+.spell h3 { font-size: 1.25rem; margin: .35rem 0 .2rem; }
+.spell .d { font-style: italic; color: var(--moon-soft); font-size: 1.1rem; }
+.spell .seek { height: 14px; margin-top: .5rem; position: relative; display: none; }
+.spell.active .seek { display: block; }
+.seek::before, .seek i { content: ""; position: absolute; left: 0; top: 6px; height: 1px; }
+.seek::before { right: 0; background: var(--gold-soft); }
+.seek i { width: calc(var(--p, 0) * 100%); background: var(--gold); height: 2px; top: 5.5px; box-shadow: 0 0 8px var(--gold); }
+.spell .time { font-size: .9rem; color: var(--moon-soft); display: none; }
+.spell.active .time { display: block; }
+.moonbtn {
+  width: 60px; height: 60px; border-radius: 50%; border: 0; cursor: pointer; color: var(--gold);
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle, var(--night) 0 27px, transparent 28px),
+    conic-gradient(var(--gold) calc(var(--p, 0) * 360deg), var(--gold-soft) 0);
+  transition: box-shadow .3s;
+}
+.spell:hover .moonbtn, .spell.active .moonbtn { box-shadow: 0 0 22px rgba(201,164,92,.45); }
+.moonbtn svg { width: 16px; height: 16px; fill: currentColor; }
+.i-pause { display: none; }
+.playing .i-play { display: none; }
+.playing .i-pause { display: block; }
+
+/* ---- Tarot testimonials ---- */
+.tarot { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-auto-rows: 1fr; gap: 1.8rem; align-items: stretch; }
+.card { margin: 0; position: relative; display: flex; padding: 14px; background: linear-gradient(180deg, var(--velvet), var(--plum)); border: 1px solid var(--gold); box-shadow: 0 0 0 0 rgba(201,164,92,0), 0 30px 50px -30px rgba(0,0,0,.8), 0 0 0 rgba(201,164,92,0); transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s; }
+/* Hover: a gentle swell, and the frame thickens in gold.
+   The extra thickness is a box-shadow ring, so the card's layout doesn't shift. */
+.card:hover { transform: scale(1.035); box-shadow: 0 0 0 3px var(--gold), 0 40px 60px -30px rgba(0,0,0,.85), 0 0 40px rgba(201,164,92,.35); }
+.card:hover .card-inner, .card:hover .window { border-color: var(--gold); }
+.card-inner { flex: 1; display: flex; flex-direction: column; border: 1px solid var(--gold-soft); padding: 1.2rem 1.2rem 1.6rem; text-align: center; transition: border-color .6s; }
+.card .numeral { font: 500 .85rem/1 var(--display); letter-spacing: .3em; color: var(--gold); }
+.card .window { margin: 1rem 0 1.2rem; border-radius: 999px 999px 3px 3px; overflow: hidden; border: 1px solid var(--gold-soft); transition: border-color .6s; }
+.card .window img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.85); }
+.card blockquote { margin: 0 0 1.2rem; font: italic 400 1.2rem/1.45 var(--body); }
+.card .arcana { margin-top: auto; font: 500 .95rem/1.2 var(--display); letter-spacing: .14em; color: var(--gold); text-transform: uppercase; }
+.card figcaption { font-size: 1rem; color: var(--rose); margin-top: .35rem; }
+
+/* ---- Tomes (releases) ---- */
+.tomes { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 2.4rem 1.6rem; }
+.tome { text-decoration: none; text-align: center; }
+.tome .frame { border-radius: 26px 26px 3px 3px; overflow: hidden; border: 1px solid var(--gold-soft); padding: 6px; transition: border-color .3s, box-shadow .3s; }
+.tome .cover { border-radius: 20px 20px 2px 2px; overflow: hidden; } /* square, like the covers, with a softly rounded top */
+.tome .cover img { width: 100%; aspect-ratio: 1; object-fit: cover; transform: scale(var(--zoom, 1)); } /* --zoom crops in on covers that have dark bars */
+.tome:hover .frame { border-color: var(--gold); box-shadow: 0 0 26px rgba(201,164,92,.3); }
+.tome .g { display: block; margin-top: .9rem; font: 500 .66rem/1.4 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.tome .t { display: block; font: italic 500 1.12rem/1.25 var(--body); margin-top: .25rem; }
+.tome .n { display: block; font-size: .92rem; color: var(--moon-soft); margin-top: .2rem; }
+
+.houses { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 0; list-style: none; margin: 0; padding: 0; font: 400 clamp(.9rem, 1.6vw, 1.1rem)/1.6 var(--display); letter-spacing: .14em; }
+.houses li:not(:last-child)::after { content: "☾"; color: var(--gold); margin: 0 1.1rem; opacity: .8; }
+
+/* ---- Finale ---- */
+footer { text-align: center; padding: 5rem 5vw 6rem; }
+.finale-moon { width: 120px; height: 120px; margin: 0 auto 2rem; border-radius: 50%; background: radial-gradient(circle at 38% 35%, #fff8e4, #d9cda9 55%, #a79b7a); box-shadow: 0 0 60px rgba(236,228,207,.35), 0 0 140px rgba(201,164,92,.2); }
+footer .eyebrow { font: italic 400 1.3rem/1 var(--body); color: var(--rose); }
+footer h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); margin: 1rem auto 2.4rem; max-width: 16em; }
+
+
+@media (max-width: 860px) {
+  body { font-size: 1.18rem; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 16px 4rem; gap: 4rem; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero .ctas { justify-content: center; }
+  .portal { width: min(78%, 360px); margin-top: 3.5rem; } /* room for the ring, which extends above the arch */
+  .tarot { grid-auto-rows: auto; } /* single column on phones: let each card fit its quote */
+  .section { padding: 4.5rem 16px; }
+  .folio { grid-template-columns: 1fr; padding: 2.5rem 1.4rem; gap: 2.4rem; }
+  .folio .small-arch { max-width: 280px; margin: 0 auto; }
+  .spell { grid-template-columns: 44px 1fr 56px; gap: 1rem; }
+  .sigil { width: 44px; height: 44px; }
+  .moonbtn { width: 52px; height: 52px; background: radial-gradient(circle, var(--night) 0 23px, transparent 24px), conic-gradient(var(--gold) calc(var(--p, 0) * 360deg), var(--gold-soft) 0); }
+  header nav a:not(:last-child)::after { margin: 0 .6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ring, .sky i { animation: none; } * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+<header>
+  <div class="moons" id="moons" aria-hidden="true"></div>
+  <a class="brand" href="#">Shakira Shute</a>
+  <nav>
+    <!-- ARCHIVED (ask to restore): <a href="https://www.shakirashute.com/">Home</a> -->
+    <a class="on" href="#">Audiobooks</a>
+    <a href="awards.html">Awards</a>
+    <a href="evelyn-rose.html">Evelyn Rose</a>
+    <a href="voice-actor.html">Voice Actor</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">✦ Narrator · Voice Actor ✦</div>
+      <h1>Shakira Shute<span>Audiobook Narrator</span></h1>
+      <p>A full time narrator of over 180 titles, known for her versatility with characters and accents across literary, historical, romance, fantasy and children’s fiction.</p>
+      <div class="ctas">
+        <a class="btn" href="#samples">Listen</a>
+        <a class="btn" href="mailto:shakirashute@gmail.com">Contact me</a>
+        <a class="btn insta" href="https://www.instagram.com/shakirashute_voiceover" target="_blank" rel="noopener" aria-label="Follow @shakirashute_voiceover on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+          Follow on Instagram
+        </a>
+      </div>
+    </div>
+    <div class="portal">
+      <svg class="ring" viewBox="0 0 600 600" aria-hidden="true">
+        <defs><path id="circ" d="M300 300 m-270 0 a270 270 0 1 1 540 0 a270 270 0 1 1 -540 0"/></defs>
+        <circle cx="300" cy="300" r="290" fill="none" stroke="rgba(201,164,92,.25)"/>
+        <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(201,164,92,.15)"/>
+        <!-- textLength fits the words exactly once around the circle (circumference ≈ 1697) -->
+        <text textLength="1690" lengthAdjust="spacing"><textPath href="#circ">✦ TELLER OF TALES ✦ BRITISH AND BOOKISH ✦ BOOKS ARE MAGIC ✦ TELLER OF TALES ✦ BRITISH AND BOOKISH ✦ BOOKS ARE MAGIC&#160;</textPath></text>
+      </svg>
+      <div class="arch"><img data-photo="portrait" alt="Portrait of Shakira Shute" loading="eager"></div>
+      <span class="star" style="left:-8%;top:18%">✦</span>
+      <span class="star" style="right:-6%;top:48%;font-size:1rem">✧</span>
+      <span class="star" style="left:4%;bottom:-4%;font-size:.9rem">✦</span>
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 90 18" fill="none" stroke="currentColor"><circle cx="45" cy="9" r="6"/><circle cx="45" cy="9" r="2" fill="currentColor"/><path d="M12 9h24M54 9h24"/><circle cx="8" cy="9" r="2"/><circle cx="82" cy="9" r="2"/></svg></div>
+
+  <section class="section">
+    <div class="folio">
+      <svg class="corner tl" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <svg class="corner tr" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <svg class="corner bl" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <svg class="corner br" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <div class="small-arch"><img data-photo="bookshelf" alt="Shakira at the microphone in front of bookshelves"></div>
+      <div>
+        <p>Shakira Shute is a full time audiobook narrator of over 180 titles, specializing in literary, historical, romance, fantasy and children’s fiction, as well as historical and political non-fiction. She has worked with Penguin Random House, Simon &amp; Schuster, Macmillan Audio, Hachette, Harper, and Tantor Audio, and has also narrated books in collaboration with Oxford University Press and MIT.</p>
+        <p>Shakira is a multi-award nominated narrator, known for her skills and versatility with characters and accents.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="samples">
+    <header class="sec-head">
+      <div class="eyebrow">The Book of Voices</div>
+      <h2>Audiobook Samples</h2>
+    </header>
+    <ol class="spells" id="spells"></ol>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 90 18" fill="none" stroke="currentColor"><circle cx="45" cy="9" r="6"/><circle cx="45" cy="9" r="2" fill="currentColor"/><path d="M12 9h24M54 9h24"/><circle cx="8" cy="9" r="2"/><circle cx="82" cy="9" r="2"/></svg></div>
+
+  <section class="section">
+    <header class="sec-head">
+      <div class="eyebrow">A Reading of the Cards</div>
+      <h2>What People Are Saying</h2>
+    </header>
+    <div class="tarot">
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">I</div>
+        <div class="window"><img data-photo="sittingTree" alt="Shakira reading beneath a tree"></div>
+        <blockquote>“My book is a test for a voice artist: 7 POVs, all first person, half women, half men, very different personalities … she has nailed them all. I honestly can’t believe it. Listening to it back has been the best experience of my life.”</blockquote>
+        <div class="arcana">The Author</div>
+        <figcaption>Ed Crocker, author of Nightfall</figcaption>
+      </div></figure>
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">II</div>
+        <div class="window"><img data-photo="studio" alt="Shakira recording in the studio"></div>
+        <blockquote>“My Favourite narrator by far. Shakira does such a great job of bringing my stories to life, she’s now top of my request list for every book I write.”</blockquote>
+        <div class="arcana">The Author</div>
+        <figcaption>Keri Beevis, author</figcaption>
+      </div></figure>
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">III</div>
+        <div class="window"><img data-photo="standing" alt="Shakira standing in a forest"></div>
+        <blockquote>“I will look for anything that has Shakira Shute narrating. She was so much fun as all the characters.”</blockquote>
+        <div class="arcana">The Listener</div>
+        <figcaption>Audible reviewer</figcaption>
+      </div></figure>
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">IV</div>
+        <div class="window"><img data-photo="reading" alt="Shakira reading against a tree trunk"></div>
+        <blockquote>“Shute shifts expertly from the group's rampant sarcasm and sniping to their gut-wrenching sorrow over a past member's suicide.”</blockquote>
+        <div class="arcana">The Critic</div>
+        <figcaption>AudioFile Magazine</figcaption>
+      </div></figure>
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">V</div>
+        <div class="window"><img data-photo="forest" alt="Shakira among tall forest trees"></div>
+        <blockquote>“Shakira captured the essence of my characters so perfectly, I was blown away from the start. She went above and beyond to make sure that I was happy, and the end result was exceptional.”</blockquote>
+        <div class="arcana">The Author</div>
+        <figcaption>Pixie Britton, author</figcaption>
+      </div></figure>
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">VI</div>
+        <div class="window"><img data-photo="bookshelf" alt="Shakira reading in front of bookshelves" style="object-position: 50% 35%"></div>
+        <blockquote>“Narrated with heart and vulnerability… Shute’s performance captures the romance, grief, and high-stakes glamour at the center of Lexi’s story.”</blockquote>
+        <div class="arcana">The Critic</div>
+        <figcaption>AudioFile Magazine, on The Heir Apparent</figcaption>
+      </div></figure>
+      <figure class="card"><div class="card-inner">
+        <div class="numeral">VII</div>
+        <div class="window"><img src="media/images/forest-cedar.jpg" alt="Shakira standing beside a great cedar in a sunlit forest" loading="lazy" style="object-position: 49% 60%"></div>
+        <blockquote>“This narrator is one of the best I’ve heard. All of her different voices and accents made me forget I was listening to one person. She is outstanding!”</blockquote>
+        <div class="arcana">The Listener</div>
+        <figcaption>Audible reviewer</figcaption>
+      </div></figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head">
+      <div class="eyebrow">Tales Recently Told</div>
+      <h2>Featured Releases</h2>
+    </header>
+    <div class="tomes" id="tomes"></div>
+  </section>
+
+  <section class="section">
+    <header class="sec-head"><div class="eyebrow">Clients</div></header>
+    <ul class="houses">
+      <li>Penguin Random House</li><li>Simon &amp; Schuster</li><li>Macmillan Audio</li><li>Hachette</li>
+      <li>Harper</li><li>Tantor Audio</li><li>Dreamscape</li><li>Podium Audio</li>
+    </ul>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 90 18" fill="none" stroke="currentColor"><circle cx="45" cy="9" r="6"/><circle cx="45" cy="9" r="2" fill="currentColor"/><path d="M12 9h24M54 9h24"/><circle cx="8" cy="9" r="2"/><circle cx="82" cy="9" r="2"/></svg></div>
+
+  <section class="section">
+    <header class="sec-head">
+      <div class="eyebrow">Broadcast-ready</div>
+      <h2>The Studio</h2>
+    </header>
+    <div class="folio">
+      <svg class="corner tl" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <svg class="corner tr" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <svg class="corner bl" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <svg class="corner br" viewBox="0 0 46 46" fill="none" stroke="currentColor"><path d="M2 30V2h28"/><path d="M8 20V8h12"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+      <div class="small-arch"><img data-photo="studio" alt="Shakira recording in her studio"></div>
+      <div>
+        <h3>Professional Home Studio</h3>
+        <p class="lede">Available for live directed sessions and remote recording.</p>
+        <ul class="kit">
+          <li><div><b>Studio Bricks OnePlus</b><span>Voice Over Edition sound booth</span></div></li>
+          <li><div><b>Neumann TLM 103</b><span>Microphone</span></div></li>
+          <li><div><b>Audacity</b><span>Recording and editing (DAW)</span></div></li>
+          <li><div><b>Mac Mini</b><span>Computer</span></div></li>
+          <li><div><b>Cleanfeed / Zoom</b><span>Live directed sessions and remote recording</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="finale-moon" aria-hidden="true"></div>
+  <div class="eyebrow">Books are magic</div>
+  <h2>Let my voice bring that magic to life</h2>
+  <a class="btn fill" href="mailto:shakirashute@gmail.com">Contact me</a>
+</footer>
+
+<script>
+/* ===== CONTENT — edit these lists to change samples, books and photos ===== */
+const CDN = 'media/images/';
+const MP3 = 'media/audio/';
+const PH = (id, n) => `media/images/portrait-${n}.jpg`; // local copies of the portrait photos
+const PHOTOS = {
+  bookshelf:   PH('b605f7a0-2933-43c7-8d14-84ee1964ae09', 6),
+  forest:      PH('f1e60bd2-a667-4f3e-bc6a-8cc1351c2785', 88, 2500),
+  sittingTree: PH('843628b8-36b8-48b2-886c-66d89972604a', 108),
+  studio:      PH('78c0254c-fcb9-4b79-a135-e2072b539fe1', 46),
+  standing:    PH('16a90243-7852-48dd-bdf6-feab4c66d323', 72),
+  portrait:    PH('f5bdfe8d-3192-491c-8252-2c262011a474', 117),
+  reading:     PH('188e26e9-27d5-42be-a50f-71b8808b7aa5', 100),
+};
+// [genre, details, file]
+const SAMPLES = [
+  ['Historical Romance', 'Yorkshire Accent · M/F Dialogue · 3rd POV', 'historical-romance-yorkshire-accent-m-f-dialogue.mp3'],
+  ["Women's Literary Fiction", 'Irish Accent · M/F Dialogue · 1st POV', 'women-s-fiction-irish-accent-1st-pov-m-f-dialogue.mp3'],
+  ['Fantasy', 'French Accent · M/F Dialogue · 3rd POV', 'fantasy-french-accent-m-f-dialogue-3rd-pov.mp3'],
+  ["Women's Literary Fiction", 'Welsh Accent · 3rd POV', 'womens-literary-fiction-3rd-pov-welsh-accent.mp3'],
+  ['Classic Literature', 'Gothic / Horror · 1st POV', 'challenge-21.mp3'],
+  ['Middle Grade', 'Fantasy · 3rd POV', 'middlegrade-3rdperson-shakirashute.mp3'],
+  ['Middle Grade Fantasy', 'American & British Accents · F/F Dialogue · 1st POV', 'once-a-queen-sample.mp3'],
+  ['Historical Romance', 'M/F Dialogue · 3rd POV', '3rdpersonpov-historicalromance-m-fdialogue.mp3'],
+  ['Non-Fiction', 'Social Change', 'non-fiction-social-change.mp3'],
+];
+// [title, genre, cover image, Audible path, note, optional zoom (e.g. 1.58 to crop dark side bars off a cover)]
+const BOOKS = [
+  ['Empire of the Dawn', 'Fantasy', '516zeuonf6l-sl250.jpg', 'Empire-of-the-Dawn-Audiobook/B0DZJ3GFHM', 'Dual narration with Damian Lynch'],
+  ['Empire of the Damned', 'Science Fiction, Fantasy', '614pmuw2e3l-sl500.jpg', 'Empire-of-the-Damned-Audiobook/B0C6FJZQKZ', 'Dual narration with Damian Lynch'],
+  ['The Castle in the Glen', 'Historical Romance & Mystery', '51tpfuyrwnl-sl250.jpg', 'The-Castle-in-the-Glen-Audiobook/B0H1DL4PC7', ''],
+  ['The Winged Game', 'Fantasy / Sports Romance', '51vepwdoafl-sl250.jpg', 'The-Winged-Game-Audiobook/B0FVP2ZHJZ', 'Dual narration with Will Watt'],
+  ['The Heir Apparent', 'Fiction', '51xalen9sdl-sl250.jpg', 'The-Heir-Apparent-Audiobook/B0FJB9NHFG', ''],
+  ['The Players Club', "Literary/Women's Fiction", '41msgoapgfl-sl250.jpg', 'The-Players-Club-Audiobook/B0FXHQ846G', ''],
+  ['The Women on Platform Two', "Women's Literary Fiction", 'the-women-on-platform-two.jpg', 'The-Women-on-Platform-Two-Audiobook/B0D684VBMC', ''],
+  ['Pride and Prejudice and Pittsburgh', 'Sapphic Romance, Historical', '91dbbelthzl-sl1500.jpg', 'Pride-and-Prejudice-and-Pittsburgh-Audiobook/B0BSB4YVBB', 'Dual narration with Natalie Naudus'],
+  ['Curious Tides', 'YA, Dark Academia Fantasy', 'img-1602.jpg', 'Curious-Tides-Audiobook/B0BW1ZH1L9', '', 1.28],
+  ['Meet Me Under the Mistletoe', 'Contemporary, Holiday Romance', '518dnv-2zyl-sl500.jpg', 'Meet-Me-Under-the-Mistletoe-Audiobook/B09S27QJS8', ''],
+  ['Never Fall for Your Fiancée', 'Romance, Historical', 'img-3057.jpg', 'Never-Fall-for-Your-Fiancee-Audiobook/0593510240', 'Dual narration with Shane East'],
+  ['The People Next Door', 'Mystery, Thriller & Suspense', 'img-3060.jpg', 'The-People-Next-Door-Audiobook/B09PLQ7SFD', ''],
+  ['Blasphemy', 'Non-Fiction, Religious Studies', 'img-3062.jpg', 'Blasphemy-Audiobook/B09MG7CBW7', ''],
+  ['Lightfall', 'Fantasy & Science Fiction', 'lightfall-cover.jpg', 'Lightfall-Book-One-of-The-Everlands-Audiobook/B0D4ZNSSGZ', ''],
+  ['Stranger Skies', 'Teen & YA Fantasy', 'stranger-skies.jpg', 'Stranger-Skies-Audiobook/B0D67DB62K', '', 1.61],
+  ["The Housekeeper's Secret", 'Historical Literary Fiction', 'the-housekeepers-secret.jpg', 'The-Housekeepers-Secret-Audiobook/B0CKM6B4WG', ''],
+  ['Once a Queen', 'Middle Grade & Teen Fantasy', 'once-a-queen.jpg', 'Once-a-Queen-Audiobook/B0B2HD3C3D', ''],
+];
+
+/* ===== Audio engine (one shared player) ===== */
+const audio = new Audio();
+audio.preload = 'none';
+let cur = null;
+const fmt = s => isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
+function toggle(el) {
+  if (cur === el) { audio.paused ? audio.play() : audio.pause(); return; }
+  if (cur) { cur.classList.remove('active', 'playing'); cur.style.setProperty('--p', 0); }
+  cur = el;
+  el.classList.add('active');
+  audio.src = el.dataset.src;
+  audio.play();
+}
+audio.addEventListener('play', () => cur?.classList.add('playing'));
+audio.addEventListener('pause', () => cur?.classList.remove('playing'));
+audio.addEventListener('timeupdate', () => {
+  if (!cur) return;
+  cur.style.setProperty('--p', audio.currentTime / audio.duration || 0);
+  cur.querySelectorAll('.time').forEach(e => e.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`);
+});
+document.addEventListener('click', e => {
+  const seek = e.target.closest('.seek');
+  if (seek && cur && audio.duration && seek.closest('[data-src]') === cur) {
+    const r = seek.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    return;
+  }
+  const trigger = e.target.closest('[data-src]');
+  if (trigger) toggle(trigger);
+});
+document.querySelectorAll('[data-photo]').forEach(img => { img.src = PHOTOS[img.dataset.photo]; if (!img.closest('.portal')) img.loading = 'lazy'; });
+
+/* ===== Grimoire-specific rendering ===== */
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+const ICONS = '<svg class="i-play" viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg><svg class="i-pause" viewBox="0 0 16 16"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>';
+
+// A unique sigil for each sample: star polygon + orbiting dots, varied by index
+function sigil(i) {
+  const n = 5 + (i % 4);            // points
+  const step = n === 6 ? 1 : 2;     // star skip
+  const rot = (i * 23) % 360;
+  const pts = [...Array(n)].map((_, k) => {
+    const a = (k / n) * Math.PI * 2 + rot * Math.PI / 180;
+    return [32 + 22 * Math.cos(a), 32 + 22 * Math.sin(a)];
+  });
+  let d = '';
+  for (let k = 0; k <= n; k++) {
+    const [x, y] = pts[(k * step) % n];
+    d += `${k ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+  const dots = pts.filter((_, k) => (k + i) % 2 === 0).map(([x, y]) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.8" fill="currentColor"/>`).join('');
+  const inner = i % 3 === 0 ? '<circle cx="32" cy="32" r="6"/>' : i % 3 === 1 ? '<path d="M32 22v20M22 32h20"/>' : '<path d="M36 26a7 7 0 1 0 0 12a9 9 0 1 1 0-12z"/>';
+  return `<svg class="sigil" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1"><circle cx="32" cy="32" r="30" stroke-opacity=".5"/><path d="${d}Z"/>${inner}${dots}</svg>`;
+}
+
+document.getElementById('spells').innerHTML = SAMPLES.map(([g, d, f], i) => `
+  <li class="spell" data-src="${MP3 + f}">
+    ${sigil(i)}
+    <div>
+      <div class="numeral">${ROMAN[i]}</div>
+      <h3>${g}</h3>
+      <div class="d">${d}</div>
+      <div class="seek"><i></i></div>
+      <div class="time"></div>
+    </div>
+    <button class="moonbtn" aria-label="Play ${g} sample">${ICONS}</button>
+  </li>`).join('');
+
+document.getElementById('tomes').innerHTML = BOOKS.map(([t, g, img, url, note, zoom]) => `
+  <a class="tome" href="https://www.audible.com/pd/${url}" target="_blank" rel="noopener">
+    <div class="frame"><div class="cover"><img src="${CDN + img}" alt="${t} cover" loading="lazy"${zoom ? ` style="--zoom:${zoom}"` : ""}></div></div>
+    <span class="g">${g}</span><span class="t">${t}</span>${note ? `<span class="n">${note}</span>` : ''}
+  </a>`).join('');
+
+// Moon phases across the header
+document.getElementById('moons').innerHTML = [-1, -0.5, 0, 0.5, 1].map(ph => {
+  if (ph === 0) return '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#ece4cf"/></svg>';
+  const off = ph < 0 ? -1 : 1;
+  return `<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#ece4cf"/><circle cx="${8 + off * (Math.abs(ph) === 1 ? 5 : 9)}" cy="8" r="7" fill="#0d0a14"/><circle cx="8" cy="8" r="7" fill="none" stroke="rgba(201,164,92,.5)" stroke-width=".8"/></svg>`;
+}).join('');
+
+// Starfield
+const sky = document.getElementById('sky');
+let stars = '';
+for (let k = 0; k < 110; k++) {
+  const s = (Math.random() * 1.8 + .6).toFixed(1);
+  stars += `<i style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 100).toFixed(2)}%;width:${s}px;height:${s}px;--d:${(Math.random() * 4 + 2).toFixed(1)}s;animation-delay:-${(Math.random() * 5).toFixed(1)}s"></i>`;
+}
+sky.innerHTML = stars;
+</script>
+</body>
+</html>

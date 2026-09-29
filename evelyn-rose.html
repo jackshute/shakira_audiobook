@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evelyn Rose Narrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* ===== EVELYN ROSE — sister page to the Grimoire =====
+   Same bones as the main page (Cinzel, Cormorant, arches, framed folio, cards),
+   but candlelit: black cherry, wine, velvet, rose gold and blush, with roses in place of moons. */
+:root {
+  --night: #120709;
+  --wine: #230a11;
+  --velvet: #3a1220;
+  --crimson: #9e2a3a;
+  --rose-gold: #dcaa92;
+  --rose-gold-soft: rgba(220,170,146,.35);
+  --blush: #f2d6cc;
+  --cream: #f4e8e1;
+  --cream-soft: rgba(244,232,225,.7);
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Cormorant Garamond", Georgia, serif;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; } /* the ring, vine and petals can poke past the edge of the window; clip them instead of scrolling sideways */
+body {
+  margin: 0; color: var(--cream); font: 400 1.3rem/1.6 var(--body);
+  background:
+    radial-gradient(ellipse 90% 55% at 70% 0%, rgba(158,42,58,.38), transparent 70%) fixed,
+    radial-gradient(ellipse 70% 50% at 0% 100%, rgba(90,20,40,.35), transparent 70%) fixed,
+    var(--night);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.15; letter-spacing: .06em; }
+
+/* ---- Drifting petals (in place of the main page's stars) ---- */
+.petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.petals i {
+  position: absolute; top: -40px; width: var(--s); height: calc(var(--s) * .8);
+  background: radial-gradient(ellipse at 30% 30%, #d4566a, #7d1627 70%);
+  border-radius: 80% 0 80% 0; opacity: .55;
+  animation: fall var(--d) linear infinite, sway calc(var(--d) / 4) ease-in-out infinite alternate;
+  animation-delay: var(--delay), var(--delay);
+  filter: blur(.3px);
+}
+@keyframes fall { to { top: 105vh; transform: rotate(540deg); } }
+@keyframes sway { from { margin-left: -24px; } to { margin-left: 24px; } }
+main, header, footer { position: relative; z-index: 1; }
+
+.btn { display: inline-block; padding: .85em 1.9em; border: 1px solid var(--rose-gold); color: var(--rose-gold); text-decoration: none; font: 500 .8rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; transition: background .25s, color .25s, box-shadow .25s; }
+.btn:hover, .btn.fill { background: var(--rose-gold); color: var(--night); }
+.btn.fill:hover { background: transparent; color: var(--rose-gold); box-shadow: 0 0 24px rgba(220,170,146,.3); }
+
+/* ---- Header ---- */
+header { text-align: center; padding: 2.2rem 16px 1rem; }
+.roses { display: flex; justify-content: center; align-items: end; gap: .9rem; margin-bottom: .6rem; color: var(--rose-gold); }
+.roses svg { width: 18px; height: 22px; }
+.roses svg:nth-child(3) { width: 24px; height: 30px; color: #e07a88; }
+header .back { margin-top: 1rem; }
+
+/* ---- Thorned divider ---- */
+.divider { display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--rose-gold); margin: 0 auto; max-width: 560px; padding: 0 16px; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 8px; background:
+  linear-gradient(var(--rose-gold-soft), var(--rose-gold-soft)) center / 100% 1px no-repeat,
+  repeating-linear-gradient(90deg, transparent 0 22px, var(--rose-gold-soft) 22px 23px, transparent 23px 34px) center / 100% 5px no-repeat; }
+.divider svg { width: 34px; height: 40px; color: #e07a88; }
+
+.section { max-width: 1180px; margin: 0 auto; padding: 6rem 5vw; }
+.sec-head { text-align: center; margin-bottom: 3.5rem; }
+.sec-head .eyebrow { font: 400 2rem/1 var(--script); color: #e39aa4; }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-top: .6rem; }
+.sec-head p { color: var(--cream-soft); font-style: italic; margin: .8rem 0 0; }
+
+/* ---- Hero ---- */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: center; max-width: 1180px; margin: 0 auto; padding: 3.5rem 5vw 6rem; }
+.hero .eyebrow { display: inline-flex; align-items: center; gap: .8rem; font: 500 .78rem/1 var(--display); letter-spacing: .3em; color: var(--rose-gold); text-transform: uppercase; }
+.hero h1 { font: 400 clamp(4.2rem, 10vw, 7.6rem)/.95 var(--script); letter-spacing: 0; color: var(--blush); margin: 1.2rem 0 1.8rem; text-shadow: 0 0 40px rgba(224,122,136,.35); }
+.hero p { color: var(--cream-soft); max-width: 31rem; margin: 0 0 2.2rem; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: .9rem; }
+
+.portal { position: relative; width: min(100%, 440px); margin: 0 auto; aspect-ratio: 440 / 600; }
+.ring { position: absolute; left: 50%; top: 34%; width: 138%; aspect-ratio: 1; transform: translate(-50%, -50%); animation: spin 110s linear infinite; }
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.ring text { font: 500 13px var(--display); letter-spacing: 4px; fill: var(--rose-gold); }
+.arch { position: absolute; inset: 0; border-radius: 999px 999px 4px 4px; overflow: hidden; border: 1px solid var(--rose-gold); box-shadow: 0 0 60px rgba(158,42,58,.35); }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; filter: saturate(1.05) contrast(1.05); }
+.arch::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(58,18,32,.15), rgba(58,18,32,0) 40%, rgba(18,7,9,.7)), radial-gradient(ellipse at 50% 55%, transparent 50%, rgba(18,7,9,.45)); }
+.portal::before { content: ""; position: absolute; inset: -12px; border: 1px solid var(--rose-gold-soft); border-radius: 999px 999px 8px 8px; }
+.vine { position: absolute; left: -46px; bottom: -18px; width: 120px; height: 300px; color: var(--rose-gold); pointer-events: none; }
+.vine .bloom { color: #d4566a; }
+
+/* ---- About folio ---- */
+.folio { position: relative; max-width: 920px; margin: 0 auto; padding: 4rem 4.5rem; border: 1px solid var(--rose-gold-soft); background: rgba(35,10,17,.65); text-align: center; }
+.folio .corner { position: absolute; width: 58px; height: 58px; color: var(--rose-gold); }
+.folio .corner.tl { top: 10px; left: 10px; }
+.folio .corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+.folio .corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+.folio .corner.br { bottom: 10px; right: 10px; transform: scale(-1); }
+.folio p { margin: 0 0 1.4rem; }
+.folio .lede { font-size: 1.5rem; line-height: 1.5; }
+.folio .lede::first-letter { font: 400 2.4em/.8 var(--script); color: #e39aa4; }
+.accents { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 2rem 0 2.4rem; padding: 0; }
+.accents li { font: 500 .72rem/1 var(--display); letter-spacing: .16em; text-transform: uppercase; padding: .75em 1.1em; border: 1px solid var(--rose-gold-soft); border-radius: 999px; color: var(--rose-gold); background: rgba(158,42,58,.12); }
+.aside { font-style: italic; color: var(--cream-soft); max-width: 36rem; margin: 0 auto !important; }
+.aside::before { content: ""; display: block; width: 26px; height: 34px; margin: 0 auto .8rem; background: currentColor; -webkit-mask: var(--glass) center / contain no-repeat; mask: var(--glass) center / contain no-repeat; color: #b8434f;
+  --glass: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 34'><path d='M3 1h20c0 8-3 13-8.5 14V29H19v3H7v-3h4.5V15C6 14 3 9 3 1z'/></svg>"); }
+
+/* ---- Titles as cards ---- */
+.titles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; align-items: stretch; }
+.card { position: relative; display: flex; padding: 12px; text-decoration: none; background: linear-gradient(180deg, var(--velvet), var(--wine)); border: 1px solid var(--rose-gold); box-shadow: 0 0 0 0 rgba(227,154,164,0), 0 30px 50px -30px rgba(0,0,0,.85), 0 0 0 rgba(227,154,164,0); transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s, border-color .6s; }
+/* Hover: a gentle swell, and the frame thickens and blushes to the pink of the "Recent titles" heading.
+   The extra thickness is a box-shadow ring, so the card's layout doesn't shift. */
+.card:hover, .card:focus-visible { transform: scale(1.035); border-color: #e39aa4; box-shadow: 0 0 0 3px #e39aa4, 0 40px 60px -30px rgba(0,0,0,.9), 0 0 40px rgba(227,154,164,.4); outline: none; }
+.card:hover .card-inner, .card:hover .window, .card:focus-visible .card-inner, .card:focus-visible .window { border-color: #e39aa4; }
+.card-inner { flex: 1; display: flex; flex-direction: column; align-items: center; border: 1px solid var(--rose-gold-soft); padding: 1.2rem 1.1rem 1.5rem; text-align: center; transition: border-color .6s; }
+.card .numeral { font: 500 .85rem/1 var(--display); letter-spacing: .3em; color: var(--rose-gold); }
+.card .window { align-self: stretch; margin: 1rem auto 1.2rem; border-radius: 999px 999px 3px 3px; overflow: hidden; border: 1px solid var(--rose-gold-soft); transition: border-color .6s; }
+.card .window img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .6s; }
+.card:hover .window img { transform: scale(1.04); }
+.card .g { display: block; font: 500 .7rem/1.4 var(--display); letter-spacing: .2em; text-transform: uppercase; color: #e07a88; }
+.card .t { display: block; font: italic 500 1.4rem/1.2 var(--body); margin: .35rem 0 .8rem; }
+.card .go { margin-top: auto; font: 500 .68rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; color: var(--rose-gold); border-bottom: 1px solid var(--rose-gold-soft); padding-bottom: .3em; }
+
+/* ---- Finale ---- */
+footer { text-align: center; padding: 4rem 5vw 5rem; }
+.finale-rose { width: 90px; height: 120px; margin: 0 auto 1.6rem; color: #d4566a; filter: drop-shadow(0 0 24px rgba(212,86,106,.45)); }
+footer .eyebrow { font: 400 2.2rem/1 var(--script); color: #e39aa4; }
+footer h2 { font-size: clamp(1.8rem, 4.2vw, 3rem); margin: 1rem auto 2.4rem; max-width: 18em; }
+footer .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; }
+
+@media (max-width: 860px) {
+  body { font-size: 1.18rem; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 16px 4rem; gap: 4rem; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero .ctas { justify-content: center; }
+  .portal { width: min(78%, 360px); margin-top: 3.5rem; } /* room for the ring, which extends above the arch */
+  .vine { left: -34px; width: 90px; height: 230px; }
+  .section { padding: 4.5rem 16px; }
+  .folio { padding: 3rem 1.4rem; }
+  .folio .lede { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ring, .petals { animation: none; display: none; } * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- Reusable rose drawing -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="rose" viewBox="0 0 40 52">
+    <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 27c-6.5 0-9.5-4.2-9.5-8.4 0-3 1.8-5.2 4-6.4 1 3 3 4.4 5.5 4.4s4.5-1.4 5.5-4.4c2.2 1.2 4 3.4 4 6.4 0 4.2-3 8.4-9.5 8.4z"/>
+      <path d="M15.5 14.5c0-3.2 2-5.5 4.5-5.5s4.5 2.3 4.5 5.5c-1 2-2.6 3-4.5 3s-3.5-1-4.5-3z"/>
+      <path d="M20 9.5c-1.2 1.6-1.2 3.4.2 4.8"/>
+      <path d="M20 27v23"/>
+      <path d="M20 38c-3.5-.3-6.5-2.6-7.5-6 3.6-.2 6.2 1.8 7.5 6z"/>
+      <path d="M20 34c3-.3 5.6-2.2 6.6-5.2-3.2-.2-5.6 1.6-6.6 5.2z"/>
+      <path d="M20 44l-2.5 1.2M20 31l2.3 1"/>
+    </g>
+  </symbol>
+</svg>
+
+<header>
+  <div class="roses" aria-hidden="true">
+    <svg><use href="#rose"/></svg><svg><use href="#rose"/></svg><svg><use href="#rose"/></svg><svg><use href="#rose"/></svg><svg><use href="#rose"/></svg>
+  </div>
+  <a class="btn back" href="index.html">Back to Shakira Shute</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">✦ Romance Narrator ✦</div>
+      <h1>Evelyn Rose</h1>
+      <p>A multi-award nominated British romance narrator based in the stunning Pacific North West, bringing love stories to life — historical, fantasy, dark or off the charts spicy.</p>
+      <div class="ctas">
+        <a class="btn" href="#titles">Recent titles</a>
+        <a class="btn" href="https://www.instagram.com/evelyn_rose_narrator" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="btn" href="mailto:shakirashute@gmail.com">Contact</a>
+      </div>
+    </div>
+    <div class="portal">
+      <svg class="ring" viewBox="0 0 600 600" aria-hidden="true">
+        <defs><path id="circ" d="M300 300 m-270 0 a270 270 0 1 1 540 0 a270 270 0 1 1 -540 0"/></defs>
+        <circle cx="300" cy="300" r="290" fill="none" stroke="rgba(220,170,146,.25)"/>
+        <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(220,170,146,.15)" stroke-dasharray="2 10"/>
+        <!-- textLength stretches the words to fit exactly once around the circle (circumference ≈ 1697) -->
+        <text textLength="1690" lengthAdjust="spacing"><textPath href="#circ">❦ EVELYN ROSE ❦ ROMANCE NARRATOR ❦ HISTORICAL ❦ FANTASY ❦ DARK ❦ SPICY ❦ EVELYN ROSE ❦ ROMANCE NARRATOR ❦ HISTORICAL ❦ FANTASY ❦ DARK ❦ SPICY&#160;</textPath></text>
+      </svg>
+      <div class="arch"><img src="media/images/evelyn-rose-hero.jpg" alt="Evelyn Rose, red lips, behind the pages of an open book"></div>
+      <svg class="vine" viewBox="0 0 120 300" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+        <path d="M60 300C40 250 78 215 52 170S64 90 48 40"/>
+        <path d="M55 250l-9-4M60 222l9-3M53 190l-10-2M58 150l9-5M50 118l-9-3M54 84l8-5"/>
+        <path d="M58 236c-12-2-20-10-22-20 11 0 19 7 22 20zM56 132c11-3 18-11 19-21-10 1-17 9-19 21z"/>
+        <use class="bloom" href="#rose" x="26" y="0" width="44" height="58"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="divider"><svg><use href="#rose"/></svg></div>
+
+  <section class="section">
+    <div class="folio">
+      <svg class="corner tl" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M3 44V3h41"/><path d="M10 30c0-12 8-20 20-20"/><path d="M16 19l-4-3M23 12l-2-4"/><circle cx="9" cy="9" r="3" fill="currentColor"/></svg>
+      <svg class="corner tr" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M3 44V3h41"/><path d="M10 30c0-12 8-20 20-20"/><path d="M16 19l-4-3M23 12l-2-4"/><circle cx="9" cy="9" r="3" fill="currentColor"/></svg>
+      <svg class="corner bl" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M3 44V3h41"/><path d="M10 30c0-12 8-20 20-20"/><path d="M16 19l-4-3M23 12l-2-4"/><circle cx="9" cy="9" r="3" fill="currentColor"/></svg>
+      <svg class="corner br" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M3 44V3h41"/><path d="M10 30c0-12 8-20 20-20"/><path d="M16 19l-4-3M23 12l-2-4"/><circle cx="9" cy="9" r="3" fill="currentColor"/></svg>
+      <p class="lede">A sucker for romance and HEAs, Evelyn loves nothing more than bringing love stories to life. Whether they are historical, fantasy, dark or off the charts spicy, Evelyn’s sultry voice breathes life into stories and their characters.</p>
+      <p>She is known for her skills with characters and accents, and is able to perform multiple UK regional accents, as well as Irish, Australian, French, and general American accents.</p>
+      <ul class="accents">
+        <li>UK Regional</li><li>Irish</li><li>Australian</li><li>French</li><li>General American</li>
+      </ul>
+      <p class="aside">When she’s not fulfilling desires in the booth, you’ll likely find her wrapping her mouth around a delicious firm and full-bodied … glass of red.</p>
+    </div>
+  </section>
+
+  <div class="divider"><svg><use href="#rose"/></svg></div>
+
+  <section class="section" id="titles">
+    <header class="sec-head">
+      <div class="eyebrow">Recent titles</div>
+      <h2>To Tickle Your Fancy</h2>
+      <p>A selection of recent titles to tickle your fancy …</p>
+    </header>
+    <div class="titles" id="books"></div>
+  </section>
+</main>
+
+<footer>
+  <svg class="finale-rose" aria-hidden="true"><use href="#rose"/></svg>
+  <div class="eyebrow">Happily ever after</div>
+  <h2>Love stories, brought to life</h2>
+  <div class="ctas">
+    <a class="btn fill" href="https://www.instagram.com/evelyn_rose_narrator" target="_blank" rel="noopener">Follow on Instagram</a>
+    <a class="btn" href="index.html">Back to Shakira Shute</a>
+  </div>
+</footer>
+
+<script>
+/* ===== CONTENT — edit this list to change the featured titles ===== */
+const CDN = 'media/images/';
+// [title, genre, cover image, Audible link]
+const BOOKS = [
+  ['The Unplanned Wedding', 'Spicy Romance', 'the-unplanned-wedding.jpg', 'https://www.audible.com/pd/The-Unplanned-Wedding-Audiobook/B0DS6GMGNV'],
+  ['Can I Tell You Something', 'Spicy Novella', 'can-i-tell-you-something.jpg', 'https://www.audible.com/ac/Can-I-Tell-You-Something-Audiobook/B0DKB1PNYX'],
+  ['Nanny for the Neighbors', 'Spicy Why Choose Romance', 'nanny-for-the-neighbors.jpg', 'https://www.audible.com/pd/Nanny-for-the-Neighbors-Audiobook/B0CVBJQXNS'],
+  ['The American', 'Romance', 'the-american.jpg', 'https://www.audible.com/pd/The-American-Audiobook/B0CYQKFBTG'],
+];
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+
+document.getElementById('books').innerHTML = BOOKS.map(([t, g, img, url], i) => `
+  <a class="card" href="${url}" target="_blank" rel="noopener"><div class="card-inner">
+    <div class="numeral">${ROMAN[i]}</div>
+    <div class="window"><img src="${CDN + img}" alt="${t} cover" loading="lazy"></div>
+    <span class="g">${g}</span>
+    <span class="t">${t}</span>
+    <span class="go">Listen on Audible</span>
+  </div></a>`).join('');
+
+// Drifting rose petals
+let petals = '';
+for (let k = 0; k < 16; k++) {
+  const s = Math.round(8 + Math.random() * 10);
+  const d = (18 + Math.random() * 16).toFixed(1);
+  petals += `<i style="left:${(Math.random() * 100).toFixed(1)}%;--s:${s}px;--d:${d}s;--delay:-${(Math.random() * d).toFixed(1)}s"></i>`;
+}
+document.getElementById('petals').innerHTML = petals;
+</script>
+</body>
+</html>

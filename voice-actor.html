@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakira Shute — Voice Actor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===== VOICE ACTOR — a straighter, more commercial take on the Grimoire style =====
+   Keeps the dark palette, gold frames, rose accents and hover effects;
+   drops the stars, moons, sigils, arches and rotating ring. */
+:root {
+  --night: #100d15;
+  --plum: #17131d;
+  --velvet: #211b29;
+  --gold: #c9a45c;
+  --gold-soft: rgba(201,164,92,.35);
+  --moon: #ece4cf;
+  --moon-soft: rgba(236,228,207,.68);
+  --rose: #c79288;
+  --label: "Cinzel", "Trajan Pro", Georgia, serif;   /* small caps labels and menu only */
+  --display: "Cormorant Garamond", Georgia, serif;   /* headings: cleaner than the main page's Cinzel */
+  --body: "Cormorant Garamond", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; color: var(--moon); font: 400 1.3rem/1.6 var(--body);
+  background: linear-gradient(180deg, #1b1622 0%, var(--night) 45%) fixed, var(--night);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-height: 1.1; letter-spacing: .01em; }
+
+.btn { display: inline-block; padding: .85em 1.9em; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font: 500 .78rem/1 var(--label); letter-spacing: .2em; text-transform: uppercase; transition: background .25s, color .25s; cursor: pointer; }
+.btn:hover, .btn.fill { background: var(--gold); color: var(--night); }
+.btn.fill:hover { background: transparent; color: var(--gold); }
+
+/* ---- Header: same menu, without the moon phases ---- */
+body > header { text-align: center; padding: 2.6rem 16px 1rem; border-bottom: 1px solid rgba(201,164,92,.18); }
+.brand { font: 500 1.5rem/1 var(--label); letter-spacing: .3em; text-decoration: none; }
+body > header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 0; margin: 1.2rem 0 .4rem; font: 400 .72rem/1 var(--label); letter-spacing: .22em; text-transform: uppercase; }
+body > header nav a { text-decoration: none; opacity: .75; padding: .4rem 0; }
+body > header nav a:not(:last-child)::after { content: "·"; margin: 0 1rem; color: var(--gold); }
+body > header nav a:hover, header nav a.on { opacity: 1; color: var(--gold); }
+header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the Evelyn Rose page's pink */
+
+/* ---- Simple divider ---- */
+.divider { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 0 auto; max-width: 420px; padding: 0 16px; }
+.divider::before, .divider::after { content: ""; flex: 1; border-top: 1px solid var(--gold-soft); }
+.divider span { width: 7px; height: 7px; border: 1px solid var(--gold); transform: rotate(45deg); }
+
+.section { max-width: 1180px; margin: 0 auto; padding: 4.5rem 5vw; }
+.sec-head { text-align: center; margin-bottom: 3rem; }
+.sec-head .eyebrow { font: 500 .72rem/1 var(--label); letter-spacing: .28em; text-transform: uppercase; color: var(--rose); }
+.sec-head h2 { font-size: clamp(2.2rem, 4.4vw, 3.2rem); margin-top: .7rem; }
+.sec-head p { color: var(--moon-soft); font-style: italic; margin: .6rem 0 0; }
+
+/* ---- Hero: headshot in a straight gold frame ---- */
+.hero { display: grid; grid-template-columns: .9fr 1.1fr; gap: 5vw; align-items: center; max-width: 1180px; margin: 0 auto; padding: 4.5rem 5vw 5rem; }
+.hero .eyebrow { font: 500 .75rem/1 var(--label); letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+.hero h1 { font-size: clamp(3.2rem, 7vw, 5.6rem); line-height: 1; margin: 1.1rem 0 1rem; }
+.hero .sub { font: italic 400 clamp(1.2rem, 2vw, 1.5rem)/1.3 var(--body); color: var(--rose); margin: 0 0 1.6rem; }
+.hero p { color: var(--moon-soft); max-width: 30rem; margin: 0 0 2.2rem; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: .9rem; }
+
+.portrait { position: relative; width: min(100%, 400px); margin: 0 auto; }
+.portrait::before { content: ""; position: absolute; inset: -14px; border: 1px solid var(--gold-soft); }
+.portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; border: 1px solid var(--gold); padding: 8px; background: var(--plum); }
+
+/* ---- Player pieces ---- */
+.wave { display: flex; align-items: center; justify-content: center; gap: 3px; width: 44px; height: 44px; flex: 0 0 auto; }
+.wave i { width: 3px; border-radius: 2px; background: var(--gold); opacity: .75; height: var(--h); }
+.playing .wave i { animation: bounce .9s ease-in-out infinite alternate; animation-delay: var(--dl); opacity: 1; }
+@keyframes bounce { from { height: 18%; } to { height: 100%; } }
+.numeral { font: 500 .7rem/1 var(--label); letter-spacing: .28em; color: var(--rose); }
+.seek { height: 14px; position: relative; display: none; cursor: pointer; }
+.active .seek { display: block; }
+.seek::before, .seek i { content: ""; position: absolute; left: 0; top: 6px; height: 1px; }
+.seek::before { right: 0; background: var(--gold-soft); }
+.seek i { width: calc(var(--p, 0) * 100%); background: var(--gold); height: 2px; top: 5.5px; }
+.time { font-size: .9rem; color: var(--moon-soft); display: none; }
+.active .time { display: block; }
+.playbtn {
+  --size: 54px;
+  width: var(--size); height: var(--size); border-radius: 50%; border: 0; cursor: pointer; color: var(--gold);
+  display: grid; place-items: center; flex: 0 0 auto;
+  background:
+    radial-gradient(circle, var(--plum) 0 calc(var(--size) / 2 - 2px), transparent calc(var(--size) / 2 - 1px)),
+    conic-gradient(var(--gold) calc(var(--p, 0) * 360deg), var(--gold-soft) 0);
+  transition: background-color .3s;
+}
+.playbtn svg { width: 15px; height: 15px; fill: currentColor; }
+.i-pause { display: none; }
+.playing .i-play { display: none; }
+.playing .i-pause { display: block; }
+
+/* Gold-framed card, shared by the reel, demos and videos.
+   Hover: a gentle swell and a thickening gold frame (box-shadow ring, so nothing shifts). */
+.frame-card {
+  position: relative; display: flex; min-width: 0; padding: 10px;
+  background: var(--velvet);
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 0 rgba(201,164,92,0), 0 24px 40px -28px rgba(0,0,0,.8);
+  transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s;
+}
+.frame-card:hover, .frame-card.active { box-shadow: 0 0 0 3px var(--gold), 0 30px 50px -28px rgba(0,0,0,.85); }
+.frame-card:hover { transform: scale(1.03); }
+.frame-inner { flex: 1; min-width: 0; border: 1px solid var(--gold-soft); transition: border-color .6s; }
+.frame-card:hover .frame-inner, .frame-card.active .frame-inner { border-color: var(--gold); }
+
+/* ---- Featured: the full commercial reel ---- */
+.reel { max-width: 860px; margin: 0 auto; cursor: pointer; }
+.reel:hover { transform: scale(1.02); }
+.reel .frame-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1.8rem; align-items: center; padding: 2rem 2.2rem; }
+.reel .wave { width: 72px; height: 64px; gap: 4px; }
+.reel .wave i { width: 4px; }
+.reel .label { font: 500 .72rem/1 var(--label); letter-spacing: .28em; text-transform: uppercase; color: var(--rose); }
+.reel h3 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin: .5rem 0 .2rem; }
+.reel .by { font-style: italic; color: var(--moon-soft); }
+.reel .seek { margin-top: 1rem; }
+.reel .playbtn { --size: 84px; }
+.reel .playbtn svg { width: 22px; height: 22px; }
+
+/* ---- Style demos ---- */
+.demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1.6rem; max-width: 900px; margin: 0 auto; }
+.demo { cursor: pointer; }
+.demo .frame-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1rem; align-items: center; align-content: center; padding: 1.5rem 1.3rem; }
+.demo h3 { font-size: 1.5rem; line-height: 1.15; margin-top: .35rem; }
+.demo .seek, .demo .time { grid-column: 1 / -1; }
+
+/* ---- Videos (YouTube loads only when played) ---- */
+.videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 2rem; }
+.video .frame-inner { padding: 10px; }
+.screen { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.screen img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.8); transition: filter .6s, transform .6s; }
+.screen iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.screen button { position: absolute; inset: 0; width: 100%; border: 0; background: linear-gradient(180deg, transparent 40%, rgba(16,13,21,.55)); cursor: pointer; display: grid; place-items: center; }
+.screen .playbtn { --size: 72px; pointer-events: none; background: rgba(16,13,21,.7); border: 1px solid var(--gold); }
+.screen .playbtn svg { width: 20px; height: 20px; }
+.video:hover .screen img { filter: brightness(.95); transform: scale(1.03); }
+.video .caption { text-align: center; padding: 1.2rem .8rem .8rem; }
+.video .caption h3 { font-size: 1.5rem; }
+.video .caption p { margin: .2rem 0 0; font-style: italic; color: var(--moon-soft); }
+
+/* ---- Footer: same wording, without the moon ---- */
+footer { text-align: center; padding: 3rem 5vw 6rem; }
+footer .eyebrow { font: 500 .72rem/1 var(--label); letter-spacing: .28em; text-transform: uppercase; color: var(--rose); }
+footer h2 { font-size: clamp(2.2rem, 4.8vw, 3.4rem); margin: 1rem auto 2.4rem; max-width: 16em; }
+
+@media (max-width: 860px) {
+  body { font-size: 1.18rem; }
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 2.5rem 16px 3rem; gap: 3.5rem; }
+  .hero p, .hero .sub { margin-left: auto; margin-right: auto; }
+  .hero .ctas { justify-content: center; }
+  .portrait { width: min(78%, 340px); }
+  .section { padding: 3.5rem 16px; }
+  .reel .frame-inner { grid-template-columns: minmax(0, 1fr) auto; padding: 1.5rem 1.3rem; gap: 1.2rem; }
+  .reel .wave { display: none; }
+  .reel .playbtn { --size: 68px; }
+  .demos { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  body > header nav a:not(:last-child)::after { margin: 0 .6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .playing .wave i { animation: none; } * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="index.html">Shakira Shute</a>
+  <nav>
+    <!-- ARCHIVED (ask to restore): <a href="https://www.shakirashute.com/">Home</a> -->
+    <a href="index.html">Audiobooks</a>
+    <a href="awards.html">Awards</a>
+    <a href="evelyn-rose.html">Evelyn Rose</a>
+    <a class="on" href="#">Voice Actor</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="portrait"><img src="media/images/voice-actor-headshot.jpg" alt="Headshot of Shakira Shute"></div>
+    <div>
+      <div class="eyebrow">Voice Actor</div>
+      <h1>Commercial Demos</h1>
+      <p class="sub">Commercial · Explainer · E-Learning · Audio Drama</p>
+      <p>From warm and conversational to energetic, luxurious or sultry — have a listen to the full commercial reel and a selection of styles.</p>
+      <div class="ctas">
+        <a class="btn fill" href="#reel" id="play-reel">Play the reel</a>
+        <a class="btn" href="mailto:shakirashute@gmail.com">Contact me</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span></span></div>
+
+  <section class="section">
+    <header class="sec-head">
+      <div class="eyebrow">Start here</div>
+      <h2>The Full Reel</h2>
+    </header>
+    <div class="frame-card reel" id="reel"></div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <header class="sec-head">
+      <div class="eyebrow">A voice for every brief</div>
+      <h2>Commercial Styles</h2>
+      <p>Press play to listen.</p>
+    </header>
+    <div class="demos" id="demos"></div>
+  </section>
+
+  <div class="divider"><span></span></div>
+
+  <section class="section">
+    <header class="sec-head">
+      <div class="eyebrow">On screen</div>
+      <h2>Voiceover Work</h2>
+    </header>
+    <div class="videos" id="videos"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="divider" style="margin-bottom:3rem"><span></span></div>
+  <div class="eyebrow">Books are magic</div>
+  <h2>Let my voice bring that magic to life</h2>
+  <a class="btn fill" href="mailto:shakirashute@gmail.com">Contact me</a>
+</footer>
+
+<script>
+/* ===== CONTENT — edit these lists to change the demos and videos ===== */
+const MP3 = 'media/audio/';
+const REEL = ['Full Commercial Reel', 'Shakira Shute', 'shakira-commercial-mix.mp3'];
+// [style, file]
+const DEMOS = [
+  ['Explainer', 'lift-lock-remove.mp3'],
+  ['Conversational', 'we-care.mp3'],
+  ['Energetic', 'footloose.mp3'],
+  ['Young / Conversational', 'uco.mp3'],
+  ['Luxury / Sultry', 'whitebeachholidays.mp3'],
+  ['Sexy', 'lovebits.mp3'],
+];
+// [YouTube id, title, description]
+const VIDEOS = [
+  ['F2M_A58p9os', 'The Sojourn Audio Drama', 'Narration for the Official Ship Breakdown'],
+  ['B4-evlr4MK8', 'Camp Lender', 'E-Learning video'],
+];
+
+/* ===== Audio engine (one shared player, as on the main page) ===== */
+const audio = new Audio();
+audio.preload = 'none';
+let cur = null;
+const fmt = s => isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
+function toggle(el) {
+  if (cur === el) { audio.paused ? audio.play() : audio.pause(); return; }
+  if (cur) { cur.classList.remove('active', 'playing'); cur.style.setProperty('--p', 0); }
+  cur = el;
+  el.classList.add('active');
+  audio.src = el.dataset.src;
+  audio.play();
+}
+audio.addEventListener('play', () => cur?.classList.add('playing'));
+audio.addEventListener('pause', () => cur?.classList.remove('playing'));
+audio.addEventListener('timeupdate', () => {
+  if (!cur) return;
+  cur.style.setProperty('--p', audio.currentTime / audio.duration || 0);
+  cur.querySelectorAll('.time').forEach(e => e.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`);
+});
+document.addEventListener('click', e => {
+  const seek = e.target.closest('.seek');
+  if (seek && cur && audio.duration && seek.closest('[data-src]') === cur) {
+    const r = seek.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    return;
+  }
+  const trigger = e.target.closest('[data-src]');
+  if (trigger) toggle(trigger);
+});
+
+/* ===== Rendering ===== */
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+const ICONS = '<svg class="i-play" viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg><svg class="i-pause" viewBox="0 0 16 16"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>';
+
+// A small sound-wave icon; each one gets a slightly different shape, and it moves while playing
+function wave(i, bars = 5) {
+  const heights = [40, 75, 100, 60, 85, 50, 70];
+  return `<span class="wave" aria-hidden="true">${[...Array(bars)].map((_, k) =>
+    `<i style="--h:${heights[(k + i) % heights.length]}%;--dl:-${((k * 0.17 + i * 0.1) % 0.9).toFixed(2)}s"></i>`).join('')}</span>`;
+}
+
+// Featured reel
+const reel = document.getElementById('reel');
+reel.dataset.src = MP3 + REEL[2];
+reel.innerHTML = `<div class="frame-inner">
+  ${wave(0, 7)}
+  <div>
+    <div class="label">Featured demo</div>
+    <h3>${REEL[0]}</h3>
+    <div class="by">${REEL[1]}</div>
+    <div class="seek"><i></i></div>
+    <div class="time"></div>
+  </div>
+  <button class="playbtn" aria-label="Play ${REEL[0]}">${ICONS}</button>
+</div>`;
+document.getElementById('play-reel').addEventListener('click', e => {
+  e.preventDefault();
+  reel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (cur !== reel || audio.paused) toggle(reel);
+});
+
+// Style demos
+document.getElementById('demos').innerHTML = DEMOS.map(([name, f], i) => `
+  <div class="frame-card demo" data-src="${MP3 + f}"><div class="frame-inner">
+    ${wave(i + 1)}
+    <div><div class="numeral">${ROMAN[i]}</div><h3>${name}</h3></div>
+    <button class="playbtn" aria-label="Play ${name} demo">${ICONS}</button>
+    <div class="seek"><i></i></div>
+    <div class="time"></div>
+  </div></div>`).join('');
+
+// Videos: show the YouTube thumbnail, and only load the player when pressed
+document.getElementById('videos').innerHTML = VIDEOS.map(([id, title, desc]) => `
+  <figure class="frame-card video" style="margin:0"><div class="frame-inner">
+    <div class="screen">
+      <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy">
+      <button data-video="${id}" aria-label="Play video: ${title}"><span class="playbtn"><svg viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg></span></button>
+    </div>
+    <figcaption class="caption"><h3>${title}</h3><p>${desc}</p></figcaption>
+  </div></figure>`).join('');
+document.querySelectorAll('[data-video]').forEach(btn => btn.addEventListener('click', () => {
+  if (!audio.paused) audio.pause();
+  btn.parentElement.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${btn.dataset.video}?autoplay=1&rel=0" title="${btn.getAttribute('aria-label')}" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+}));
+</script>
+</body>
+</html>

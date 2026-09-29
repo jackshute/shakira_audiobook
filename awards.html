@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakira Shute Narrator — Awards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===== AWARDS — same Grimoire styling as the main page ===== */
+:root {
+  --night: #0d0a14;
+  --plum: #171022;
+  --velvet: #231833;
+  --gold: #c9a45c;
+  --gold-soft: rgba(201,164,92,.35);
+  --moon: #ece4cf;
+  --moon-soft: rgba(236,228,207,.68);
+  --rose: #c79288;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Cormorant Garamond", Georgia, serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; color: var(--moon); font: 400 1.3rem/1.6 var(--body);
+  background: radial-gradient(ellipse 120% 60% at 50% 0%, #241536 0%, var(--night) 60%) fixed, var(--night);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; line-height: 1.15; letter-spacing: .06em; }
+
+/* ---- Starfield ---- */
+.sky { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.sky i { position: absolute; border-radius: 50%; background: #fff6de; animation: twinkle var(--d) ease-in-out infinite alternate; }
+@keyframes twinkle { from { opacity: .15; } to { opacity: .9; } }
+main, header, footer { position: relative; z-index: 1; }
+
+.btn { display: inline-block; padding: .85em 1.9em; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font: 500 .8rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; transition: background .25s, color .25s; }
+.btn:hover, .btn.fill { background: var(--gold); color: var(--night); }
+.btn.fill:hover { background: transparent; color: var(--gold); }
+
+/* ---- Header ---- */
+header { text-align: center; padding: 2.4rem 16px 1rem; }
+.moons { display: flex; justify-content: center; gap: .9rem; margin-bottom: 1.1rem; }
+.moons svg { width: 16px; height: 16px; }
+.brand { font: 500 1.6rem/1 var(--display); letter-spacing: .3em; text-decoration: none; }
+header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 0; margin-top: 1.3rem; font: 400 .74rem/1 var(--display); letter-spacing: .22em; text-transform: uppercase; }
+header nav a { text-decoration: none; opacity: .75; padding: .4rem 0; }
+header nav a:not(:last-child)::after { content: "✦"; margin: 0 1rem; color: var(--gold); opacity: .7; font-size: .6rem; vertical-align: middle; }
+header nav a:hover, header nav a.on { opacity: 1; color: var(--gold); }
+header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the Evelyn Rose page's pink */
+
+/* ---- Ornamental divider ---- */
+.divider { display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--gold); margin: 0 auto; max-width: 520px; padding: 0 16px; }
+.divider::before, .divider::after { content: ""; flex: 1; border-top: 1px solid var(--gold-soft); }
+.divider svg { width: 90px; height: 18px; }
+
+/* ---- Hero: title inside a laurel wreath ---- */
+.hero { text-align: center; padding: 3rem 16px 4.5rem; }
+.wreath { position: relative; width: min(360px, 80vw); aspect-ratio: 1; margin: 0 auto; }
+.wreath svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--gold); overflow: visible; }
+.wreath-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.wreath-text .eyebrow { font: italic 400 1.15rem/1 var(--body); color: var(--rose); }
+.wreath-text h1 { font-size: clamp(2.6rem, 7vw, 3.8rem); margin: .5rem 0 .4rem; letter-spacing: .08em; }
+.wreath-text .years { font: 500 .78rem/1 var(--display); letter-spacing: .3em; color: var(--gold); }
+.hero .lede { max-width: 34rem; margin: 2.4rem auto 0; color: var(--moon-soft); }
+
+/* ---- Award cards ---- */
+.section { max-width: 1080px; margin: 0 auto; padding: 4.5rem 5vw 6rem; }
+.awards { display: grid; gap: 3.5rem; }
+.award {
+  position: relative; display: flex; padding: 14px;
+  background: linear-gradient(180deg, var(--velvet), var(--plum));
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 0 rgba(201,164,92,0), 0 30px 50px -30px rgba(0,0,0,.8), 0 0 0 rgba(201,164,92,0);
+  transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s;
+}
+/* Hover: same as the tarot cards — a gentle swell and a thickening gold frame (a box-shadow ring, so nothing shifts) */
+.award:hover { transform: scale(1.02); box-shadow: 0 0 0 3px var(--gold), 0 40px 60px -30px rgba(0,0,0,.85), 0 0 40px rgba(201,164,92,.3); }
+.award-inner {
+  flex: 1; display: grid; grid-template-columns: 1fr 1.25fr; gap: 3rem; align-items: center;
+  border: 1px solid var(--gold-soft); padding: 2.4rem; transition: border-color .6s;
+}
+.award:hover .award-inner { border-color: var(--gold); }
+.award:nth-child(even) .fan { order: 2; }
+
+/* The award graphics, fanned like a pair of cards when there are two */
+.fan { position: relative; width: 100%; max-width: 360px; aspect-ratio: 1; margin: 0 auto; }
+.fan img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 1px solid var(--gold); padding: 6px; background: var(--plum); box-shadow: 0 20px 40px -20px rgba(0,0,0,.8); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.fan.tall { aspect-ratio: 4 / 5; } /* portrait award graphics */
+
+/* Section headings (as on the main page) */
+.sec-head { text-align: center; margin-bottom: 3.5rem; }
+.sec-head .eyebrow { font: italic 400 1.2rem/1 var(--body); color: var(--rose); }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-top: .6rem; }
+.section:has(.awards) { padding-bottom: 4.5rem; }
+
+/* Spotlight feature: two graphics side by side above the text */
+.award.spotlight .award-inner { grid-template-columns: 1fr; gap: 2.2rem; }
+.award.spotlight .body { text-align: center; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.pair img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--gold); padding: 6px; background: var(--plum); box-shadow: 0 20px 40px -20px rgba(0,0,0,.8); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.award:hover .pair img { transform: scale(1.02); }
+/* No tilt: the award graphic sits straight and expands slightly on hover */
+.award:hover .fan .front { transform: scale(1.04); }
+
+.award .body { text-align: left; }
+.award .edition { font: 500 .78rem/1.4 var(--display); letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
+.award h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); line-height: 1.3; margin: .8rem 0 1rem; }
+.award .for { font-style: italic; font-size: 1.35rem; margin: 0; }
+.award .for b { font-weight: 500; }
+.award .note { color: var(--moon-soft); font-size: 1.1rem; margin: .3rem 0 0; }
+.badge { display: inline-flex; align-items: center; gap: .7rem; margin-top: 1.6rem; padding: .7em 1.2em; border: 1px solid var(--gold); color: var(--gold); font: 500 .75rem/1 var(--display); letter-spacing: .24em; text-transform: uppercase; }
+
+/* The Evelyn Rose nomination, framed in dusty rose */
+.award.evelyn, .award.evelyn .fan img, .award.evelyn .badge { border-color: var(--rose); }
+.award.evelyn .award-inner { border-color: rgba(199,146,136,.4); }
+.award.evelyn .edition, .award.evelyn .badge { color: var(--rose); }
+.award.evelyn:hover { box-shadow: 0 0 0 3px var(--rose), 0 40px 60px -30px rgba(0,0,0,.85), 0 0 40px rgba(199,146,136,.3); }
+.award.evelyn:hover .award-inner { border-color: var(--rose); }
+.award .as { display: inline-block; margin-top: .6rem; font: 500 .72rem/1 var(--display); letter-spacing: .2em; text-transform: uppercase; color: var(--rose); text-decoration: none; border-bottom: 1px solid rgba(199,146,136,.45); padding-bottom: .3em; }
+.award .as:hover { border-color: var(--rose); }
+
+/* ---- Footer (as on the main page) ---- */
+footer { text-align: center; padding: 3rem 5vw 6rem; }
+.finale-moon { width: 120px; height: 120px; margin: 0 auto 2rem; border-radius: 50%; background: radial-gradient(circle at 38% 35%, #fff8e4, #d9cda9 55%, #a79b7a); box-shadow: 0 0 60px rgba(236,228,207,.35), 0 0 140px rgba(201,164,92,.2); }
+footer .eyebrow { font: italic 400 1.3rem/1 var(--body); color: var(--rose); }
+footer h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); margin: 1rem auto 2.4rem; max-width: 16em; }
+
+@media (max-width: 860px) {
+  body { font-size: 1.18rem; }
+  .section { padding: 3.5rem 16px 4.5rem; }
+  .award-inner { grid-template-columns: 1fr; gap: 2.4rem; padding: 2.2rem 1.4rem; }
+  .award:nth-child(even) .fan { order: 0; }
+  .fan { max-width: 280px; }
+  .pair { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .award .body { text-align: center; }
+  header nav a:not(:last-child)::after { margin: 0 .6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .sky i { animation: none; } * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+<header>
+  <div class="moons" id="moons" aria-hidden="true"></div>
+  <a class="brand" href="index.html">Shakira Shute</a>
+  <nav>
+    <!-- ARCHIVED (ask to restore): <a href="https://www.shakirashute.com/">Home</a> -->
+    <a href="index.html">Audiobooks</a>
+    <a class="on" href="#">Awards</a>
+    <a href="evelyn-rose.html">Evelyn Rose</a>
+    <a href="voice-actor.html">Voice Actor</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wreath">
+      <svg id="wreath" viewBox="0 0 300 300" aria-hidden="true"></svg>
+      <div class="wreath-text">
+        <div class="eyebrow">Honours &amp; nominations</div>
+        <h1>Awards</h1>
+        <div class="years">2022 – 2026</div>
+      </div>
+    </div>
+    <p class="lede">Shakira is a multi-award nominated narrator, known for her skills and versatility with characters and accents.</p>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 90 18" fill="none" stroke="currentColor"><circle cx="45" cy="9" r="6"/><circle cx="45" cy="9" r="2" fill="currentColor"/><path d="M12 9h24M54 9h24"/><circle cx="8" cy="9" r="2"/><circle cx="82" cy="9" r="2"/></svg></div>
+
+  <!-- Each nomination is one <article class="award">. Copy one to add another. -->
+  <section class="section">
+    <div class="awards">
+
+      <article class="award"><div class="award-inner">
+        <div class="fan tall">
+          <img class="front" src="media/images/voice-arts-2026-cottage-by-the-sea.jpg" alt="Voice Arts Awards 2026 nominee graphic for The Cottage by the Sea" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="edition">Voice Arts® Awards</div>
+          <h3>Outstanding Audiobook Narration — Thriller</h3>
+          <p class="for"><b>The Cottage by the Sea</b> by Keri Beevis</p>
+          <span class="badge">✦ Nominee · 2026 ✦</span>
+        </div>
+      </div></article>
+
+      <article class="award"><div class="award-inner">
+        <div class="fan">
+          <img class="front" data-award="va2024book" alt="Voice Arts Awards 2024 nominee graphic for Curious Tides">
+        </div>
+        <div class="body">
+          <div class="edition">11th Voice Arts® Awards</div>
+          <h3>Outstanding Audiobook Narration — Teens</h3>
+          <p class="for"><b>Curious Tides</b> by Pascale Lacelle</p>
+          <span class="badge">✦ Nominee · 2024 ✦</span>
+        </div>
+      </div></article>
+
+      <article class="award evelyn"><div class="award-inner">
+        <div class="fan">
+          <img class="front" data-award="sultry2024" alt="Sultry Listeners Awards 2024 nominee graphic for Evelyn Rose">
+        </div>
+        <div class="body">
+          <div class="edition">10th Annual Sultry Listeners Awards</div>
+          <h3>Favorite Up &amp; Coming Narrator</h3>
+          <p class="for">Narrating as <b>Evelyn Rose</b></p>
+          <a class="as" href="evelyn-rose.html">Visit Evelyn Rose →</a><br>
+          <span class="badge">❦ Nominee · 2024 ❦</span>
+        </div>
+      </div></article>
+
+      <article class="award"><div class="award-inner">
+        <div class="fan">
+          <img class="front" data-award="onevoiceMistletoe" alt="One Voice Awards nominee graphic for Meet Me Under the Mistletoe">
+        </div>
+        <div class="body">
+          <div class="edition">One Voice Awards</div>
+          <h3>Audiobooks — Best Performance — Fiction</h3>
+          <p class="for"><b>Meet Me Under the Mistletoe</b> by Jenny Bayliss</p>
+          <p class="note">Produced by Penguin Random House · USA/Canada voices</p>
+          <span class="badge">✦ Nominee ✦</span>
+        </div>
+      </div></article>
+
+      <article class="award evelyn"><div class="award-inner">
+        <div class="fan">
+          <img class="front" data-award="va2023book" alt="Voice Arts Awards 2023 nominee graphic for A Crown of Ivy and Glass">
+        </div>
+        <div class="body">
+          <div class="edition">10th Voice Arts® Awards</div>
+          <h3>Audiobook Narration — Fantasy — Best Voiceover</h3>
+          <p class="for"><b>A Crown of Ivy and Glass</b> by Claire Legrand</p>
+          <p class="note">Narrated as Evelyn Rose</p>
+          <a class="as" href="evelyn-rose.html">Visit Evelyn Rose →</a><br>
+          <span class="badge">❦ Nominee · 2023 ❦</span>
+        </div>
+      </div></article>
+
+      <article class="award"><div class="award-inner">
+        <div class="fan">
+          <img class="front" data-award="onevoice2022reel" alt="One Voice Awards 2022 nominee graphic for Demo Reel, Best Female Performance">
+        </div>
+        <div class="body">
+          <div class="edition">One Voice Awards</div>
+          <h3>Demo Reel — Best Female Performance</h3>
+          <p class="for"><b>Commercial Reel</b></p>
+          <p class="note">Produced by Tanya Rich</p>
+          <span class="badge">✦ Nominee · 2022 ✦</span>
+        </div>
+      </div></article>
+
+    </div>
+  </section>
+
+  <div class="divider"><svg viewBox="0 0 90 18" fill="none" stroke="currentColor"><circle cx="45" cy="9" r="6"/><circle cx="45" cy="9" r="2" fill="currentColor"/><path d="M12 9h24M54 9h24"/><circle cx="8" cy="9" r="2"/><circle cx="82" cy="9" r="2"/></svg></div>
+
+  <section class="section">
+    <header class="sec-head">
+      <div class="eyebrow">In the spotlight</div>
+      <h2>Features</h2>
+    </header>
+    <article class="award spotlight"><div class="award-inner">
+      <div class="pair">
+        <img src="media/images/pana-spotlight.jpg" alt="PANA Narrator Spotlight graphic: Shakira Shute, The Accent Aerialist" loading="lazy">
+        <img src="media/images/pana-about.jpg" alt="PANA Narrator Spotlight graphic: About Shakira Shute" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="edition">PANA · Narrator Spotlight</div>
+        <h3>The Accent Aerialist</h3>
+        <p class="for">“Is Shakira Shute Welsh, French, or American? If you listen across her narration, you may never know!”</p>
+        <span class="badge">✦ Featured narrator ✦</span>
+      </div>
+    </div></article>
+  </section>
+</main>
+
+<footer>
+  <div class="finale-moon" aria-hidden="true"></div>
+  <div class="eyebrow">Books are magic</div>
+  <h2>Let my voice bring that magic to life</h2>
+  <a class="btn fill" href="mailto:shakirashute@gmail.com">Contact me</a>
+</footer>
+
+<script>
+/* ===== CONTENT — the award graphics (from the live site) ===== */
+const CDN = 'media/images/';
+const AWARD_IMAGES = {
+  va2024book:        'voice-arts-2024-curious-tides.png',
+  sultry2024:        'sultry-listeners-2024.png',
+  onevoiceMistletoe: 'one-voice-mistletoe.png',
+  va2023book:        'voice-arts-2023-crown-of-ivy-and-glass.png',
+  onevoice2022reel:  'one-voice-2022-demo-reel.png',
+};
+document.querySelectorAll('[data-award]').forEach(img => {
+  img.src = `${CDN}${AWARD_IMAGES[img.dataset.award]}`;
+  img.loading = 'lazy';
+});
+
+// Laurel wreath: two leafy branches curving up either side, drawn once and mirrored
+(() => {
+  const cx = 150, cy = 150, r = 122;
+  const leaf = 'M0 0C6-5 17-5 24 0C17 5 6 5 0 0Z';
+  let g = `<path d="M${cx + r * Math.cos(1.85)} ${cy + r * Math.sin(1.85)} A${r} ${r} 0 0 1 ${cx + r * Math.cos(4.25)} ${cy + r * Math.sin(4.25)}" fill="none" stroke="currentColor" stroke-width="1.2"/>`;
+  for (let a = 108; a <= 240; a += 12) {
+    const t = a * Math.PI / 180, x = cx + r * Math.cos(t), y = cy + r * Math.sin(t);
+    const size = 1 - (a - 108) / 400;
+    g += `<path d="${leaf}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${a + 90 - 32}) scale(${size.toFixed(2)})" fill="currentColor" opacity=".9"/>`;
+    g += `<path d="${leaf}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${a + 90 + 32}) scale(${size.toFixed(2)})" fill="none" stroke="currentColor" stroke-width="1"/>`;
+  }
+  g += `<circle cx="${cx + r * Math.cos(1.95)}" cy="${cy + r * Math.sin(1.95) + 8}" r="3" fill="currentColor"/>`;
+  document.getElementById('wreath').innerHTML =
+    `<g>${g}</g><g transform="translate(300 0) scale(-1 1)">${g}</g>` +
+    `<path d="M150 262c-9 8-22 12-34 9M150 262c9 8 22 12 34 9" fill="none" stroke="currentColor" stroke-width="1.2"/>` +
+    `<text x="150" y="30" text-anchor="middle" font-size="18" fill="currentColor">✦</text>`;
+})();
+
+// Moon phases across the header
+document.getElementById('moons').innerHTML = [-1, -0.5, 0, 0.5, 1].map(ph => {
+  if (ph === 0) return '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#ece4cf"/></svg>';
+  const off = ph < 0 ? -1 : 1;
+  return `<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#ece4cf"/><circle cx="${8 + off * (Math.abs(ph) === 1 ? 5 : 9)}" cy="8" r="7" fill="#0d0a14"/><circle cx="8" cy="8" r="7" fill="none" stroke="rgba(201,164,92,.5)" stroke-width=".8"/></svg>`;
+}).join('');
+
+// Starfield
+const sky = document.getElementById('sky');
+let stars = '';
+for (let k = 0; k < 110; k++) {
+  const s = (Math.random() * 1.8 + .6).toFixed(1);
+  stars += `<i style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 100).toFixed(2)}%;width:${s}px;height:${s}px;--d:${(Math.random() * 4 + 2).toFixed(1)}s;animation-delay:-${(Math.random() * 5).toFixed(1)}s"></i>`;
+}
+sky.innerHTML = stars;
+</script>
+</body>
+</html>
