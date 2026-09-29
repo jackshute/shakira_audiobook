@@ -120,8 +120,9 @@ header .back { margin-top: 1rem; }
 .card:hover .card-inner, .card:hover .window, .card:focus-visible .card-inner, .card:focus-visible .window { border-color: #e39aa4; }
 .card-inner { flex: 1; display: flex; flex-direction: column; align-items: center; border: 1px solid var(--rose-gold-soft); padding: 1.2rem 1.1rem 1.5rem; text-align: center; transition: border-color .6s; }
 .card .numeral { font: 500 .85rem/1 var(--display); letter-spacing: .3em; color: var(--rose-gold); }
-.card .window { align-self: stretch; margin: 1rem auto 1.2rem; border-radius: 999px 999px 3px 3px; overflow: hidden; border: 1px solid var(--rose-gold-soft); transition: border-color .6s; }
-.card .window img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .6s; }
+.card .window { align-self: stretch; margin: 1rem auto 1.2rem; border-radius: 26px 26px 3px 3px; overflow: hidden; border: 1px solid var(--rose-gold-soft); padding: 6px; transition: border-color .6s; } /* square with a softly rounded top, matching the Audiobooks covers */
+.card .window .cover { border-radius: 20px 20px 2px 2px; overflow: hidden; }
+.card .window img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .6s; }
 .card:hover .window img { transform: scale(1.04); }
 .card .g { display: block; font: 500 .7rem/1.4 var(--display); letter-spacing: .2em; text-transform: uppercase; color: #e07a88; }
 .card .t { display: block; font: italic 500 1.4rem/1.2 var(--body); margin: .35rem 0 .8rem; }
@@ -257,7 +258,7 @@ const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 document.getElementById('books').innerHTML = BOOKS.map(([t, g, img, url], i) => `
   <a class="card" href="${url}" target="_blank" rel="noopener"><div class="card-inner">
     <div class="numeral">${ROMAN[i]}</div>
-    <div class="window"><img src="${CDN + img}" alt="${t} cover" loading="lazy"></div>
+    <div class="window"><div class="cover"><img src="${CDN + img}" alt="${t} cover" loading="lazy"></div></div>
     <span class="g">${g}</span>
     <span class="t">${t}</span>
     <span class="go">Listen on Audible</span>
