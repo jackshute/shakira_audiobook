@@ -76,11 +76,8 @@ header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the E
 .playing .wave i { animation: bounce .9s ease-in-out infinite alternate; animation-delay: var(--dl); opacity: 1; }
 @keyframes bounce { from { height: 18%; } to { height: 100%; } }
 .numeral { font: 500 .7rem/1 var(--label); letter-spacing: .28em; color: var(--rose); }
-.seek { height: 14px; position: relative; display: none; cursor: pointer; }
-.active .seek { display: block; }
-.seek::before, .seek i { content: ""; position: absolute; left: 0; top: 6px; height: 1px; }
-.seek::before { right: 0; background: var(--gold-soft); }
-.seek i { width: calc(var(--p, 0) * 100%); background: var(--gold); height: 2px; top: 5.5px; }
+.seek { display: block; width: 100%; height: 34px; margin-top: .6rem; cursor: pointer; color: var(--gold); } /* clickable waveform: fills gold as it plays */
+.seek:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
 .time { font-size: .9rem; color: var(--moon-soft); display: none; }
 .active .time { display: block; }
 .playbtn {
@@ -273,14 +270,76 @@ audio.addEventListener('timeupdate', () => {
 });
 document.addEventListener('click', e => {
   const seek = e.target.closest('.seek');
-  if (seek && cur && audio.duration && seek.closest('[data-src]') === cur) {
+  if (seek) {
     const r = seek.getBoundingClientRect();
-    audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    jumpTo(seek.closest('[data-src]'), (e.clientX - r.left) / r.width);
     return;
   }
   const trigger = e.target.closest('[data-src]');
   if (trigger) toggle(trigger);
 });
+
+/* ===== Clickable waveforms =====
+   Each sample's shape was measured from the recording and stored here (a = quiet … z = loudest),
+   so the page doesn't have to download every MP3 just to draw them. */
+const WAVES = {
+  "shakira-commercial-mix.mp3": "bczknncvmhwitrqnrnskqqqlropnnnisorqukqmrmrqrjppnokpojqpjtsmrlrrsprosqqmqqmmmoonroproorppsprooorrvtnlsmqqqtkrrhrsdroofrmb",
+  "lift-lock-remove.mp3": "cfuquqpjnmhffeeruiqzuqsposjmspgfrxjfwvskkoleeeewrqmevqqssppsvsqffrwhllomtoppiomtthgeuxsjrhhewsjfeespejsivleheptqhehdcbba",
+  "we-care.mp3": "abcccczxssiztqtplddddccwwmltolonfdcddywlodvkktotttotnpjcdeedrzrtulmogccctuqiiwwpjeccccctypflvpieonfpqhdddddpxivmkodccbba",
+  "footloose.mp3": "ekozmmjqnslrrlpostoolrusnsjfwlxolmsqkyqpjpufkmqorjqpnynsjsrrkwmfixrnvvkonqrmlunhfqpunipwoqnssppsrojsnqlrqmvroqrlrigfedba",
+  "uco.mp3": "xxlsvyturuyqnnysyxwxsqvsvmhtxuqxutpnqqnhrrrunsvmwjzxotsrzshhrpsnwvouutrxtjtvqwyvspxqqmhpzrzmptuyollgmszuportkjkldcbbbaaa",
+  "whitebeachholidays.mp3": "abbbbccbcuztshcbbbsjonccccvtsokiccchxtqngccftsstljuncbbnvrklpgiddccsthbbbyviiwqecchuidulrqomccbplsoebbbljoiqgbbbbbbbaaaa",
+  "lovebits.mp3": "bqpuruppqhlkmyqmpwqmrrkfkpmgifhrsmqlslrqiivlkhkmjtqonsjjijhkuvvmkkijhuutmupvijiztmmnkkqrpsmktsqnnrmvmfgtrjkrmjkiiihefdaa"
+};
+function drawWave(c) {
+  const row = c.closest('[data-src]'), s = row && WAVES[row.dataset.src.split('/').pop()];
+  const w = c.clientWidth, h = c.clientHeight;
+  if (!s || !w) return;
+  const dpr = devicePixelRatio || 1;
+  if (c.width !== Math.round(w * dpr) || c.height !== Math.round(h * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
+  const g = c.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h);
+  const GAP = 2, count = Math.max(24, Math.min(s.length, Math.floor((w + GAP) / 4.5))), step = (w + GAP) / count;
+  const p = row === cur && audio.duration ? audio.currentTime / audio.duration : 0, head = p * count;
+  g.fillStyle = g.shadowColor = getComputedStyle(c).color;
+  for (let i = 0; i < count; i++) {
+    const a = Math.floor(i * s.length / count), b = Math.max(a + 1, Math.floor((i + 1) * s.length / count));
+    let v = 0; for (let j = a; j < b; j++) v = Math.max(v, s.charCodeAt(j) - 97);
+    const bh = Math.max(2, (v / 25) * (h - 4)), played = i < head;
+    g.globalAlpha = played ? 1 : 0.3;
+    g.shadowBlur = played && head - i < 2.5 ? 10 : 0;
+    g.beginPath(); g.roundRect ? g.roundRect(i * step, (h - bh) / 2, step - GAP, bh, 1) : g.rect(i * step, (h - bh) / 2, step - GAP, bh); g.fill();
+  }
+  g.globalAlpha = 1; g.shadowBlur = 0;
+  c.setAttribute('aria-valuenow', Math.round(p * 100));
+}
+// Jump to a point: if another sample is playing, switch to this one and start from there
+function jumpTo(row, frac) {
+  frac = Math.min(1, Math.max(0, frac));
+  const go = () => { if (audio.duration) audio.currentTime = frac * audio.duration; };
+  if (cur !== row) { toggle(row); audio.addEventListener('loadedmetadata', go, { once: true }); }
+  else if (audio.duration) go();
+  else audio.addEventListener('loadedmetadata', go, { once: true });
+  if (audio.paused) audio.play();
+  wavesDirty = true;
+}
+// Keyboard: arrow keys skip 5 seconds on a selected waveform
+document.addEventListener('keydown', e => {
+  const seek = e.target.closest && e.target.closest('.seek');
+  if (!seek || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+  e.preventDefault();
+  const row = seek.closest('[data-src]');
+  if (cur !== row) { toggle(row); return; }
+  if (audio.duration) audio.currentTime = Math.min(audio.duration, Math.max(0, audio.currentTime + (e.key === 'ArrowRight' ? 5 : -5)));
+});
+let wavesDirty = true;
+['play', 'pause', 'seeked', 'loadedmetadata'].forEach(ev => audio.addEventListener(ev, () => { wavesDirty = true; }));
+addEventListener('resize', () => { wavesDirty = true; });
+document.fonts && document.fonts.ready.then(() => { wavesDirty = true; });
+(function waveLoop() {
+  if (wavesDirty) { document.querySelectorAll('canvas.seek').forEach(drawWave); wavesDirty = false; }
+  else if (cur && !audio.paused) cur.querySelectorAll('canvas.seek').forEach(drawWave);
+  requestAnimationFrame(waveLoop);
+})();
 
 /* ===== Rendering ===== */
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
@@ -302,7 +361,7 @@ reel.innerHTML = `<div class="frame-inner">
     <div class="label">Featured demo</div>
     <h3>${REEL[0]}</h3>
     <div class="by">${REEL[1]}</div>
-    <div class="seek"><i></i></div>
+    <canvas class="seek" role="slider" tabindex="0" aria-label="Jump to a point in this sample" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></canvas>
     <div class="time"></div>
   </div>
   <button class="playbtn" aria-label="Play ${REEL[0]}">${ICONS}</button>
@@ -319,7 +378,7 @@ document.getElementById('demos').innerHTML = DEMOS.map(([name, f], i) => `
     ${wave(i + 1)}
     <div><div class="numeral">${ROMAN[i]}</div><h3>${name}</h3></div>
     <button class="playbtn" aria-label="Play ${name} demo">${ICONS}</button>
-    <div class="seek"><i></i></div>
+    <canvas class="seek" role="slider" tabindex="0" aria-label="Jump to a point in this sample" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></canvas>
     <div class="time"></div>
   </div></div>`).join('');
 
