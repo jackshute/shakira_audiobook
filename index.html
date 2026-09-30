@@ -232,8 +232,7 @@ footer h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); margin: 1rem auto 2.4rem; max
         <defs><path id="circ" d="M300 300 m-270 0 a270 270 0 1 1 540 0 a270 270 0 1 1 -540 0"/></defs>
         <circle cx="300" cy="300" r="290" fill="none" stroke="rgba(201,164,92,.25)"/>
         <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(201,164,92,.15)"/>
-        <!-- textLength fits the words exactly once around the circle (circumference ≈ 1697) -->
-        <text textLength="1690" lengthAdjust="spacing"><textPath href="#circ">✦ TELLER OF TALES ✦ BRITISH AND BOOKISH ✦ BOOKS ARE MAGIC ✦ TELLER OF TALES ✦ BRITISH AND BOOKISH ✦ BOOKS ARE MAGIC&#160;</textPath></text>
+        <text><textPath href="#circ">✦ TELLER OF TALES ✦ BRITISH AND BOOKISH ✦ BOOKS ARE MAGIC ✦ TELLER OF TALES ✦ BRITISH AND BOOKISH ✦ BOOKS ARE MAGIC&#160;</textPath></text>
       </svg>
       <div class="arch"><img data-photo="portrait" alt="Portrait of Shakira Shute" loading="eager"></div>
       <span class="star" style="left:-8%;top:18%">✦</span>
@@ -577,6 +576,20 @@ for (let k = 0; k < 110; k++) {
   stars += `<i style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 100).toFixed(2)}%;width:${s}px;height:${s}px;--d:${(Math.random() * 4 + 2).toFixed(1)}s;animation-delay:-${(Math.random() * 5).toFixed(1)}s"></i>`;
 }
 sky.innerHTML = stars;
+
+// Fit the rotating words exactly once around the ring. Done here rather than with SVG's textLength,
+// which Safari (Mac and iPhone) ignores for text on a curve, leaving a gap.
+(function fitRing() {
+  const t = document.querySelector('.ring text'), path = document.getElementById('circ');
+  if (!t || !path) return;
+  const fit = () => {
+    t.style.letterSpacing = '0px';
+    const spare = path.getTotalLength() - t.getComputedTextLength();
+    t.style.letterSpacing = Math.max(0, spare / t.getNumberOfChars()) + 'px';
+  };
+  fit();
+  if (document.fonts) document.fonts.ready.then(fit);
+})();
 </script>
 </body>
 </html>

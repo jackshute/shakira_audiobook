@@ -226,8 +226,7 @@ footer .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .9r
         <defs><path id="circ" d="M300 300 m-270 0 a270 270 0 1 1 540 0 a270 270 0 1 1 -540 0"/></defs>
         <circle cx="300" cy="300" r="290" fill="none" stroke="rgba(220,170,146,.25)"/>
         <circle cx="300" cy="300" r="250" fill="none" stroke="rgba(220,170,146,.15)" stroke-dasharray="2 10"/>
-        <!-- textLength stretches the words to fit exactly once around the circle (circumference ≈ 1697) -->
-        <text textLength="1690" lengthAdjust="spacing"><textPath href="#circ">❦ EVELYN ROSE ❦ ROMANCE NARRATOR ❦ HISTORICAL ❦ FANTASY ❦ DARK ❦ SPICY ❦ EVELYN ROSE ❦ ROMANCE NARRATOR ❦ HISTORICAL ❦ FANTASY ❦ DARK ❦ SPICY&#160;</textPath></text>
+        <text><textPath href="#circ">❦ EVELYN ROSE ❦ ROMANCE NARRATOR ❦ HISTORICAL ❦ FANTASY ❦ DARK ❦ SPICY ❦ EVELYN ROSE ❦ ROMANCE NARRATOR ❦ HISTORICAL ❦ FANTASY ❦ DARK ❦ SPICY&#160;</textPath></text>
       </svg>
       <div class="arch"><img src="media/images/evelyn-rose-hero.jpg" alt="Evelyn Rose, red lips, behind the pages of an open book"></div>
       <svg class="vine" viewBox="0 0 120 300" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
@@ -434,6 +433,20 @@ for (let k = 0; k < 16; k++) {
   petals += `<i style="left:${(Math.random() * 100).toFixed(1)}%;--s:${s}px;--d:${d}s;--delay:-${(Math.random() * d).toFixed(1)}s"></i>`;
 }
 document.getElementById('petals').innerHTML = petals;
+
+// Fit the rotating words exactly once around the ring. Done here rather than with SVG's textLength,
+// which Safari (Mac and iPhone) ignores for text on a curve, leaving a gap.
+(function fitRing() {
+  const t = document.querySelector('.ring text'), path = document.getElementById('circ');
+  if (!t || !path) return;
+  const fit = () => {
+    t.style.letterSpacing = '0px';
+    const spare = path.getTotalLength() - t.getComputedTextLength();
+    t.style.letterSpacing = Math.max(0, spare / t.getNumberOfChars()) + 'px';
+  };
+  fit();
+  if (document.fonts) document.fonts.ready.then(fit);
+})();
 </script>
 </body>
 </html>
