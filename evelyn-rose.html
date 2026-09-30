@@ -135,6 +135,42 @@ footer .eyebrow { font: 400 2.2rem/1 var(--script); color: #e39aa4; }
 footer h2 { font-size: clamp(1.8rem, 4.2vw, 3rem); margin: 1rem auto 2.4rem; max-width: 18em; }
 footer .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; }
 
+/* ---- Audiobook samples (rose version of the main page's sample list) ---- */
+.samples { list-style: none; margin: 0 auto; padding: 0; max-width: 820px; }
+.sample { display: grid; grid-template-columns: 56px 1fr 60px; gap: 1.4rem; align-items: center; padding: 1.4rem 0; border-bottom: 1px solid var(--rose-gold-soft); cursor: pointer; }
+.sample:first-child { border-top: 1px solid var(--rose-gold-soft); }
+.sample .rose-icon { width: 40px; height: 52px; justify-self: center; color: var(--rose-gold); opacity: .75; transition: opacity .3s, transform .6s, color .3s; }
+.sample:hover .rose-icon, .sample.active .rose-icon { opacity: 1; color: #e07a88; transform: rotate(-8deg) scale(1.08); }
+.sample .numeral { font: 500 .72rem/1 var(--display); letter-spacing: .3em; color: #e07a88; }
+.sample h3 { font-size: 1.25rem; margin: .35rem 0 .2rem; }
+.sample .d { font-style: italic; color: var(--cream-soft); font-size: 1.1rem; }
+.sample .seek { height: 14px; margin-top: .5rem; position: relative; display: none; }
+.sample.active .seek { display: block; }
+.sample .seek::before, .sample .seek i { content: ""; position: absolute; left: 0; top: 6px; height: 1px; }
+.sample .seek::before { right: 0; background: var(--rose-gold-soft); }
+.sample .seek i { width: calc(var(--p, 0) * 100%); background: var(--rose-gold); height: 2px; top: 5.5px; box-shadow: 0 0 8px rgba(220,170,146,.8); }
+.sample .time { font-size: .9rem; color: var(--cream-soft); display: none; }
+.sample.active .time { display: block; }
+.playbtn {
+  --size: 60px;
+  width: var(--size); height: var(--size); border-radius: 50%; border: 0; cursor: pointer; color: var(--rose-gold);
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle, var(--night) 0 calc(var(--size) / 2 - 3px), transparent calc(var(--size) / 2 - 2px)),
+    conic-gradient(var(--rose-gold) calc(var(--p, 0) * 360deg), var(--rose-gold-soft) 0);
+  transition: box-shadow .3s;
+}
+.sample:hover .playbtn, .sample.active .playbtn { box-shadow: 0 0 22px rgba(224,122,136,.4); }
+.playbtn svg { width: 16px; height: 16px; fill: currentColor; }
+.i-pause { display: none; }
+.playing .i-play { display: none; }
+.playing .i-pause { display: block; }
+
+@media (max-width: 860px) {
+  .sample { grid-template-columns: 40px 1fr 52px; gap: 1rem; }
+  .sample .rose-icon { width: 30px; height: 40px; }
+  .playbtn { --size: 52px; }
+}
 @media (max-width: 860px) {
   body { font-size: 1.18rem; }
   .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 16px 4rem; gap: 4rem; }
@@ -223,6 +259,16 @@ footer .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .9r
 
   <div class="divider"><svg><use href="#rose"/></svg></div>
 
+  <section class="section" id="samples">
+    <header class="sec-head">
+      <div class="eyebrow">A taste of her voice</div>
+      <h2>Audiobook Samples</h2>
+    </header>
+    <ol class="samples" id="sample-list"></ol>
+  </section>
+
+  <div class="divider"><svg><use href="#rose"/></svg></div>
+
   <section class="section" id="titles">
     <header class="sec-head">
       <div class="eyebrow">Recent titles</div>
@@ -270,6 +316,58 @@ document.getElementById('books').innerHTML = BOOKS.map(([t, g, img, url], i) => 
     <span class="t">${t}</span>
     <span class="go">Listen on Audible</span>
   </div></a>`).join('');
+
+/* ===== Audiobook samples — edit this list to add or change samples ===== */
+// [genre, details, file in media/audio]
+const SAMPLES = [
+  ['Contemporary Romance', '1st Person · Duet Narration', 'evelyn-contemporary-romance-duet.mp3'],
+  ['Fantasy', '1st Person', 'evelyn-fantasy-1st-person.mp3'],
+  ['Erotica', '1st Person · General American Accent', 'evelyn-erotica-general-american.mp3'],
+];
+const ICONS = '<svg class="i-play" viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg><svg class="i-pause" viewBox="0 0 16 16"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>';
+document.getElementById('sample-list').innerHTML = SAMPLES.map(([g, d, f], i) => `
+  <li class="sample" data-src="media/audio/${f}">
+    <svg class="rose-icon" aria-hidden="true"><use href="#rose"/></svg>
+    <div>
+      <div class="numeral">${ROMAN[i]}</div>
+      <h3>${g}</h3>
+      <div class="d">${d}</div>
+      <div class="seek"><i></i></div>
+      <div class="time"></div>
+    </div>
+    <button class="playbtn" aria-label="Play ${g} sample">${ICONS}</button>
+  </li>`).join('');
+
+// One shared player: click a sample to play or pause it; click the bar to jump
+const audio = new Audio();
+audio.preload = 'none';
+let cur = null;
+const fmt = s => isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00';
+function toggle(el) {
+  if (cur === el) { audio.paused ? audio.play() : audio.pause(); return; }
+  if (cur) { cur.classList.remove('active', 'playing'); cur.style.setProperty('--p', 0); }
+  cur = el;
+  el.classList.add('active');
+  audio.src = el.dataset.src;
+  audio.play();
+}
+audio.addEventListener('play', () => cur?.classList.add('playing'));
+audio.addEventListener('pause', () => cur?.classList.remove('playing'));
+audio.addEventListener('timeupdate', () => {
+  if (!cur) return;
+  cur.style.setProperty('--p', audio.currentTime / audio.duration || 0);
+  cur.querySelectorAll('.time').forEach(e => e.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`);
+});
+document.addEventListener('click', e => {
+  const seek = e.target.closest('.seek');
+  if (seek && cur && audio.duration && seek.closest('[data-src]') === cur) {
+    const r = seek.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+    return;
+  }
+  const trigger = e.target.closest('[data-src]');
+  if (trigger) toggle(trigger);
+});
 
 // Drifting rose petals
 let petals = '';
