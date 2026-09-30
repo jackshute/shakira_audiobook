@@ -82,7 +82,9 @@ header .back { margin-top: 1rem; }
 .hero .eyebrow { display: inline-flex; align-items: center; gap: .8rem; font: 500 .78rem/1 var(--display); letter-spacing: .3em; color: var(--rose-gold); text-transform: uppercase; }
 .hero h1 { font: 400 clamp(4.2rem, 10vw, 7.6rem)/.95 var(--script); letter-spacing: 0; color: var(--blush); margin: 1.2rem 0 1.8rem; text-shadow: 0 0 40px rgba(224,122,136,.35); }
 .hero p { color: var(--cream-soft); max-width: 31rem; margin: 0 0 2.2rem; }
-.hero .ctas { display: flex; flex-wrap: wrap; gap: .9rem; }
+.hero .ctas { display: inline-grid; grid-template-columns: auto auto; gap: .9rem; } /* Listen + Contact on top, Instagram spanning underneath (as on the main page) */
+.hero .ctas .btn { text-align: center; }
+.hero .ctas .btn.insta { grid-column: 1 / -1; }
 
 .portal { position: relative; width: min(100%, 440px); margin: 0 auto; aspect-ratio: 440 / 600; }
 .ring { position: absolute; left: 50%; top: 34%; width: 138%; aspect-ratio: 1; transform: translate(-50%, -50%); animation: spin 110s linear infinite; }
@@ -217,9 +219,9 @@ footer .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .9r
       <h1>Evelyn Rose</h1>
       <p>A multi-award nominated British romance narrator based in the stunning Pacific North West, bringing love stories to life — historical, fantasy, dark or off the charts spicy.</p>
       <div class="ctas">
-        <a class="btn" href="#titles">Recent titles</a>
-        <a class="btn" href="https://www.instagram.com/evelyn_rose_narrator" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="btn" href="#samples">Listen</a>
         <a class="btn" href="mailto:shakirashute@gmail.com">Contact</a>
+        <a class="btn insta" href="https://www.instagram.com/evelyn_rose_narrator" target="_blank" rel="noopener">Follow on Instagram</a>
       </div>
     </div>
     <div class="portal">
