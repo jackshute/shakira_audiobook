@@ -70,6 +70,7 @@ header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the E
 /* Clients and The Studio: same 72px heading gaps as the rest of the page */
 .section:has(.houses) { padding-top: 4.5rem; padding-bottom: 4.5rem; }
 .section:has(.houses) .sec-head { margin-bottom: 1.2rem; } /* "Clients" sits close above its list */
+.section:has(.houses) .sec-head h2 { margin-top: 0; } /* no small line above it, so no gap needed */
 .section:has(.kit) { padding-top: 4.5rem; }
 .sec-head .eyebrow { font: italic 400 1.2rem/1 var(--body); color: var(--rose); }
 .sec-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-top: .6rem; }
@@ -336,7 +337,7 @@ footer h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); margin: 1rem auto 2.4rem; max
   </section>
 
   <section class="section">
-    <header class="sec-head"><div class="eyebrow">Clients</div></header>
+    <header class="sec-head"><h2>Clients</h2></header>
     <ul class="houses">
       <li>Penguin Random House</li><li>Simon &amp; Schuster</li><li>Macmillan Audio</li><li>Hachette</li>
       <li>Harper</li><li>Tantor Audio</li><li>Dreamscape</li><li>Podium Audio</li>
