@@ -160,10 +160,11 @@ header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the E
 
 /* ---- Tomes (releases) ---- */
 .tomes { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 2.4rem 1.6rem; }
-.tome { text-decoration: none; text-align: center; }
+.tome { text-decoration: none; text-align: center; display: block; transition: transform .35s ease; }
 .tome .frame { border-radius: 26px 26px 3px 3px; overflow: hidden; border: 1px solid var(--gold-soft); padding: 6px; transition: border-color .3s, box-shadow .3s; }
 .tome .cover { border-radius: 20px 20px 2px 2px; overflow: hidden; } /* square, like the covers, with a softly rounded top */
 .tome .cover img { width: 100%; aspect-ratio: 1; object-fit: cover; transform: scale(var(--zoom, 1)); } /* --zoom crops in on covers that have dark bars */
+.tome:hover { transform: scale(1.05); } /* tile grows slightly on hover */
 .tome:hover .frame { border-color: var(--gold); box-shadow: 0 0 26px rgba(201,164,92,.3); }
 .tome .g { display: block; margin-top: .9rem; font: 500 .66rem/1.4 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
 .tome .t { display: block; font: italic 500 1.12rem/1.25 var(--body); margin-top: .25rem; }
