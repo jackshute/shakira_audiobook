@@ -1,22 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="p" cx=".45" cy=".4" r=".7">
-      <stop offset="0" stop-color="#f4a9b3"/><stop offset=".55" stop-color="#e07a88"/><stop offset="1" stop-color="#a83a4e"/>
-    </radialGradient>
-  </defs>
   <rect width="64" height="64" rx="14" fill="#230a11"/>
-  <!-- stem and leaves -->
-  <path d="M32 40c0 6-1 11-3 17" fill="none" stroke="#dcaa92" stroke-width="2.6" stroke-linecap="round"/>
-  <path d="M30.6 49c-6.5.8-11.4-2-13.6-7.2 6.6-1 11.6 2 13.6 7.2z" fill="#dcaa92"/>
-  <path d="M31.6 44.5c5.8-.2 9.8-3.4 11-8.2-5.8-.4-9.8 3-11 8.2z" fill="#dcaa92"/>
-  <!-- bloom: rounded cup of petals -->
-  <path d="M32 43c-9.5 0-16-6.4-16-15 0-8.8 7-16 16-16s16 7.2 16 16c0 8.6-6.5 15-16 15z" fill="url(#p)"/>
-  <!-- petal edges spiralling into the centre -->
-  <g fill="none" stroke="#7a1f30" stroke-width="1.7" stroke-linecap="round">
-    <path d="M18.5 30c3 7 9 9.6 14.5 9.2 5.4-.4 10-4 11.4-9.6"/>
-    <path d="M20.5 22.5c-1 6.2 3.6 12 10.4 12.4 6.6.4 11.4-4.6 11-10.4"/>
-    <path d="M41 21c-1.6-4.4-6-7-10.6-6.2-5 .8-7.8 5.4-6.8 10.2 1 4.4 5.4 6.8 9.6 5.8 3.8-1 5.8-4.6 4.8-8"/>
-    <path d="M37.8 22.8c-1-2.6-3.8-4-6.4-3.2-2.8.8-4 3.8-3 6.2.9 2.2 3.4 3.2 5.4 2.4 1.8-.7 2.6-2.6 2-4.2"/>
-    <path d="M33.8 24c-.6-.9-1.8-1.2-2.6-.6"/>
+  <!-- the line-drawn rose from the Evelyn Rose page, drawn a little bolder so it reads at tab size -->
+  <g transform="translate(8 -3.4) scale(1.2)" fill="none" stroke="#e07a88" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 27c-6.5 0-9.5-4.2-9.5-8.4 0-3 1.8-5.2 4-6.4 1 3 3 4.4 5.5 4.4s4.5-1.4 5.5-4.4c2.2 1.2 4 3.4 4 6.4 0 4.2-3 8.4-9.5 8.4z"/>
+    <path d="M15.5 14.5c0-3.2 2-5.5 4.5-5.5s4.5 2.3 4.5 5.5c-1 2-2.6 3-4.5 3s-3.5-1-4.5-3z"/>
+    <path d="M20 27v23"/>
+    <path d="M20 38c-3.5-.3-6.5-2.6-7.5-6 3.6-.2 6.2 1.8 7.5 6z"/>
+    <path d="M20 34c3-.3 5.6-2.2 6.6-5.2-3.2-.2-5.6 1.6-6.6 5.2z"/>
   </g>
 </svg>
