@@ -1,0 +1,9 @@
+# Old Squarespace addresses -> new pages (301 = moved permanently, so Google transfers the ranking)
+/mainpage      /              301
+/mainpage/*    /              301
+/evelynrose    /evelyn-rose   301
+/evelynrose/*  /evelyn-rose   301
+/home          /              301
+/audiobooks    /              301
+/voiceover     /voice-actor   301
+/about         /              301
