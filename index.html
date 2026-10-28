@@ -219,10 +219,10 @@ header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the E
 .tome .g { display: block; margin-top: .9rem; font: 500 .66rem/1.4 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
 .tome .t { display: block; font: italic 500 1.12rem/1.25 var(--body); margin-top: .25rem; }
 .tome .n { display: block; font-size: .92rem; color: var(--moon-soft); margin-top: .2rem; }
-/* Desktop: line up the captions across each row (genre, then title, then note), even when a genre wraps onto two lines */
+/* Desktop: line up the captions across each row (genre, then title with its note straight underneath), even when a genre wraps onto two lines */
 @media (min-width: 768px) {
   .tomes { row-gap: 0; }
-  .tome { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; padding-bottom: 2.4rem; }
+  .tome { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; padding-bottom: 2.4rem; }
   .tome .n .w { display: block; } /* "Dual narration" / "with …" on two lines */
 }
 
@@ -617,7 +617,7 @@ document.getElementById('spells').innerHTML = SAMPLES.map(([g, d, f], i) => `
 document.getElementById('tomes').innerHTML = BOOKS.map(([t, g, img, url, note, zoom]) => `
   <a class="tome" href="https://www.audible.com/pd/${url}" target="_blank" rel="noopener">
     <div class="frame"><div class="cover"><img src="${CDN + img}" alt="${t} cover" loading="lazy"${zoom ? ` style="--zoom:${zoom}"` : ""}></div></div>
-    <span class="g">${g}</span><span class="t">${t}</span>${note ? `<span class="n">${note.replace(/ (with .*)$/, ' <span class="w">$1</span>')}</span>` : ''}
+    <span class="g">${g}</span><span class="tn"><span class="t">${t}</span>${note ? `<span class="n">${note.replace(/ (with .*)$/, ' <span class="w">$1</span>')}</span>` : ''}</span>
   </a>`).join('');
 
 // Moon phases across the header
