@@ -223,6 +223,7 @@ header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the E
 @media (min-width: 768px) {
   .tomes { row-gap: 0; }
   .tome { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; padding-bottom: 2.4rem; }
+  .tome .n .w { display: block; } /* "Dual narration" / "with …" on two lines */
 }
 
 .houses { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 0; list-style: none; margin: 0; padding: 0; font: 400 clamp(.9rem, 1.6vw, 1.1rem)/1.6 var(--display); letter-spacing: .14em; }
@@ -616,7 +617,7 @@ document.getElementById('spells').innerHTML = SAMPLES.map(([g, d, f], i) => `
 document.getElementById('tomes').innerHTML = BOOKS.map(([t, g, img, url, note, zoom]) => `
   <a class="tome" href="https://www.audible.com/pd/${url}" target="_blank" rel="noopener">
     <div class="frame"><div class="cover"><img src="${CDN + img}" alt="${t} cover" loading="lazy"${zoom ? ` style="--zoom:${zoom}"` : ""}></div></div>
-    <span class="g">${g}</span><span class="t">${t}</span>${note ? `<span class="n">${note}</span>` : ''}
+    <span class="g">${g}</span><span class="t">${t}</span>${note ? `<span class="n">${note.replace(/ (with .*)$/, ' <span class="w">$1</span>')}</span>` : ''}
   </a>`).join('');
 
 // Moon phases across the header
