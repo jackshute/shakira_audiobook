@@ -219,6 +219,11 @@ header nav a[href="evelyn-rose.html"]:hover { color: #e39aa4; } /* hint of the E
 .tome .g { display: block; margin-top: .9rem; font: 500 .66rem/1.4 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
 .tome .t { display: block; font: italic 500 1.12rem/1.25 var(--body); margin-top: .25rem; }
 .tome .n { display: block; font-size: .92rem; color: var(--moon-soft); margin-top: .2rem; }
+/* Desktop: line up the captions across each row (genre, then title, then note), even when a genre wraps onto two lines */
+@media (min-width: 768px) {
+  .tomes { row-gap: 0; }
+  .tome { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; padding-bottom: 2.4rem; }
+}
 
 .houses { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 0; list-style: none; margin: 0; padding: 0; font: 400 clamp(.9rem, 1.6vw, 1.1rem)/1.6 var(--display); letter-spacing: .14em; }
 .houses li:not(:last-child)::after { content: "☾"; color: var(--gold); margin: 0 1.1rem; opacity: .8; }
